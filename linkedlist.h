@@ -1,6 +1,7 @@
 //Dino Music
 #pragma once
 #include<iterator>
+#include<functional>
 
 template<typename T>
 struct node
@@ -27,8 +28,14 @@ class linkedlist
     //linkedlist& operator=(linkedlist&&);
     linkedlist& push_back(const T&);
     class iterator;
-    iterator find(const T&);
-    bool remove(const T&);
+    template<typename V>
+      iterator find(const V&,std::function<bool (const T&,const V&)>);
+    template<typename V>
+      bool remove(const V&,std::function<bool (const T&,const V&)> f);
+    iterator find(const T& v){return find<T>(v,[](const T &a,const T&b)->bool{return a==b;});}
+    //compiler uspjesno implicitno zakljuci tip za prvi parametar metoda, ali ne prepoznaje taj tip unutar parametara 
+    //function objekta pa se mora pozivati sa eksplicitno zadanim tipom. 
+    bool remove(const T& v){return remove<T>(v,[](const T &a,const T& b)->bool{return a==b;});}
     unsigned int size(){return size_;}
     iterator begin(){return iterator(first_);}
     iterator end(){return iterator(nullptr);}
@@ -64,12 +71,13 @@ linkedlist<T>& linkedlist<T>::push_back(const T& element)
 }
 
 template<typename T>
-typename linkedlist<T>::iterator linkedlist<T>::find(const T& val)
+template<typename V>
+typename linkedlist<T>::iterator linkedlist<T>::find(const V& val,std::function<bool (const T&,const V&)> f)
 {
   linkedlist<T>::iterator b=begin(), e=end();
   while(b!=e)
   {
-    if(*b==val)
+    if(f(*b,val))
       break;
     ++b;
   }
@@ -77,7 +85,8 @@ typename linkedlist<T>::iterator linkedlist<T>::find(const T& val)
 }
 
 template<typename T>
-bool linkedlist<T>::remove(const T& val)
+template<typename V>
+bool linkedlist<T>::remove(const V& val,std::function<bool (const T&,const V&)> f)
 {
 
   if(size_==0)
@@ -86,7 +95,7 @@ bool linkedlist<T>::remove(const T& val)
   node<T> *previous=first_, *current=first_;
   while(current!=nullptr)
   {
-    if(current->val==val)
+    if(f(current->val,val))
       break;
     previous=current;
     current=current->next_;
@@ -117,6 +126,7 @@ bool linkedlist<T>::remove(const T& val)
   return true;
 }
 
+
 template<typename T>
 class linkedlist<T>::iterator:public std::iterator<std::forward_iterator_tag,T>
 {
@@ -133,6 +143,7 @@ class linkedlist<T>::iterator:public std::iterator<std::forward_iterator_tag,T>
       return temp;
     }
     bool operator!=(const iterator &a){return elemp!=a.elemp;}
+    bool operator==(const iterator &a){return elemp==a.elemp;}
 };
 
 template<typename T>
