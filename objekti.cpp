@@ -1,4 +1,5 @@
 #include"objekti.h"
+//Emina Mahmutbegovic
 
 Student::Student(const std::string& line){
   std::stringstream sline(line);
