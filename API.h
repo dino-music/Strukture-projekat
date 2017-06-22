@@ -5,7 +5,7 @@
 template<typename T>
 class API
 {
-  private:
+  protected:
     unsigned int capacity_;
     linkedlist<T> *api_;
 
