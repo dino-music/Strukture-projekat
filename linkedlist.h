@@ -24,8 +24,6 @@ class linkedlist
     linkedlist(const linkedlist&);
     linkedlist(linkedlist&&);
     ~linkedlist();
-    //linkedlist& operator=(const linkedlist&);
-    //linkedlist& operator=(linkedlist&&);
     linkedlist& push_back(const T&);
     class iterator;
     template<typename V>
