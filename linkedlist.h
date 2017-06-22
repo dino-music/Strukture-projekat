@@ -70,6 +70,7 @@ linkedlist<T>& linkedlist<T>::push_back(const T& element)
   return *this;
 }
 
+//Genericki find metod, omogucava da u API klasi preko lambde vrsimo pretrazivanje po kljucu 
 template<typename T>
 template<typename V>
 typename linkedlist<T>::iterator linkedlist<T>::find(const V& val,std::function<bool (const T&,const V&)> f)
@@ -84,6 +85,8 @@ typename linkedlist<T>::iterator linkedlist<T>::find(const V& val,std::function<
   return b;
 }
 
+//Vrijedi isto kao i za find metod, vraca bool cisto radi komocije, da se moze utvrditi je li uopste bilo objekta koji
+//se zelio brisati
 template<typename T>
 template<typename V>
 bool linkedlist<T>::remove(const V& val,std::function<bool (const T&,const V&)> f)
@@ -126,7 +129,7 @@ bool linkedlist<T>::remove(const V& val,std::function<bool (const T&,const V&)> 
   return true;
 }
 
-
+//vanilla iterator, nista posebno
 template<typename T>
 class linkedlist<T>::iterator:public std::iterator<std::forward_iterator_tag,T>
 {
