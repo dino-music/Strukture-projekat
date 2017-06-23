@@ -1,13 +1,13 @@
 #include"objekti.h"
 //Emina Mahmutbegovic
 
-Student::Student(const std::string& line){
+Student::Student(const std::string& line){ 
   std::stringstream sline(line);
   int i=1;
   std::string info;
   getline(sline,info,',');
   id=stoi(info);
-  while(std::getline(sline,info,' ')){
+  while(std::getline(sline,info,' ')){ 
   getline(sline,info,',');
   ++i;
   switch(i){
@@ -62,12 +62,16 @@ Subject::Subject(const std::string& line){
   std::string info;
   std::getline(sline,info,',');
   id=std::stoi(info);
+  int i=1;
+  while(std::getline(sline,info,' ')){
   std::getline(sline,info,',');
-  name=info;
-  std::getline(sline,info,',');
-  ects=std::stoi(info); 
-  std::getline(sline,info,',');
-  abberv=info;
+    ++i;
+    switch(i){
+      case 2: name=info; break;
+      case 3: ects=std::stoi(info); break;
+      case 4: abberv=info; break;
+    }
+}
 }
 
 void Subject::print()const{
@@ -79,6 +83,7 @@ Department::Department(const std::string& line){
   std::string info; 
   std::getline(sline,info,',');
   id=std::stoi(info);
+  std::getline(sline,info,' ');
   std::getline(sline,info,',');
   name=info;
 }
