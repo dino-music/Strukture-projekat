@@ -31,3 +31,32 @@ bool isValid_jmbg(std::string jmbg){
     m=0;
   return m==JMBG[12] || n==JMBG[12];
 }
+
+
+//Harun Muderizovic
+void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
+{
+  std::fstream file(fileName);
+  std::string line; 
+  unsigned int sID, tID;
+  char zarez;
+  std::stringstream ss;
+  std::getline(file,line); // prva linija u fajlu
+
+  while(getline(file,line)) // za ostale linije
+  {
+    ss << line;
+
+    ss >> sID >> zarez >> tID;
+    
+    auto itSUB = subj.find(sID);
+    auto itTEA = teach.find(tID);
+    // ako objekti postoje
+    if(itSUB != subj.end() && itTEA != teach.end())
+    {  
+      (*itSUB).addTeacher(tID);
+      (*itTEA).addSubject(sID);
+    }
+
+  }
+}
