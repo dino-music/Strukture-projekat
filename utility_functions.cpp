@@ -1,7 +1,4 @@
 //Ina Saltovic
-#include <iostream>
-#include <vector>
-#include <string>
 #include "utility_functions.h"
 
 bool isValid_mail(std::string mail){
