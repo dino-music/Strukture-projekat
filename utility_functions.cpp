@@ -59,4 +59,6 @@ void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
     }
 
   }
+  
+  file.close();
 }
