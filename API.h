@@ -54,6 +54,8 @@ void API<T>::parse(const std::string& fileName)
         std::cout << x.what();
       }
     }
+  
+    file.close();
 }
 
 
