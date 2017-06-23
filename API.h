@@ -13,14 +13,47 @@ class API
     API(unsigned int c):capacity_{c},api_{new linkedlist<T>[capacity_]}{}
     API():API(113u){};
     ~API();
+    void parse(const std::string&);
     void push(unsigned int,const T&);
     typename linkedlist<T>::iterator find(unsigned int);
     bool is_present(unsigned int);
     //void remove(const T&);
     bool remove(unsigned int);
     template<typename F>
-      void for_each(F);
+    void for_each(F);
 };
+
+//Harun Muderizovic
+template<typename T>
+void API<T>::parse(const std::string& fileName)
+{
+    std::fstream file(fileName);
+    try
+    {
+        if(!file)
+            throw std::domain_error("\nFile not available!\n\n");
+    }
+    catch(std::exception& x)
+    {
+        std::cout << x.what();
+    }
+
+    std::string line;
+    std::getline(file,line);
+
+    while(std::getline(file,line))
+    {
+      try
+      {
+        T temp(line);
+        push(temp.getId(),temp);
+      }
+      catch(std::exception& x)
+      {
+        std::cout << x.what();
+      }
+    }
+}
 
 
 template<typename T>
