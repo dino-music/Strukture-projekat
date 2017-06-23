@@ -31,7 +31,7 @@ void API<T>::parse(const std::string& fileName)
     try
     {
         if(!file)
-            throw std::domain_error("\nFile(s) not available!\n\n");
+            throw std::domain_error("\nFile not available!\n\n");
     }
     catch(std::exception& x)
     {
