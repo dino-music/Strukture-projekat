@@ -2,6 +2,7 @@
 #include<string>
 #include<sstream>
 #include <iostream>
+#include "linkedlist.h"
 
 class Student{
   protected:
@@ -13,6 +14,7 @@ class Student{
     char gender;
     std::string jmbg;
     unsigned int depId;
+  linkedlist<unsigned int> subjects;
   public:
   Student()=default;
   Student(const std::string&);
@@ -44,6 +46,8 @@ class Subject{
     std::string abberv;
     std::string year;
     std::string semester;
+  unsigned int department;
+  
   public:
   Subject(const std::string&);
   unsigned int getId()const{return id;}
@@ -55,6 +59,7 @@ class Department{
   private:
     unsigned int id;
     std::string name;
+  linkedlist<unsigned int> subjects;
   public:
     Department(const std::string&);
     unsigned int getId()const{return id;}
