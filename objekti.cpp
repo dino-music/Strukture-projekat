@@ -15,7 +15,7 @@ Student::Student(const std::string& line){
     case 3: lastName=info; break;
     case 4: birthDate=info; break;
     case 5: email=info; break;
-    case 6: gender=info[1]; break;
+    case 6: gender=info[0]; break;
     case 7: jmbg=info; break;
     case 8: depId=stoi(info); break; 
 
@@ -44,7 +44,7 @@ Teacher::Teacher(const std::string& line): Student(){
     case 3: lastName=info; break;
     case 4: birthDate=info; break;
     case 5: email=info; break;
-    case 6: gender=info[1]; break;
+    case 6: gender=info[0]; break;
     case 7: jmbg=info; break;
     case 8: title=info; break;
     case 9: depId=stoi(info); break;
