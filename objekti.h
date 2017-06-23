@@ -18,6 +18,8 @@ class Student{
   public:
   Student()=default;
   Student(const std::string&);
+  //Ina Saltovic
+  Student(unsigned int, std::string&, std::string&, std::string&, std::string&, char, std::string&, unsigned int);
   unsigned int getId()const{return id;}
   const std::string& getFirstName()const {return firstName;}
   const std::string& getLastName()const{return lastName;}
@@ -35,6 +37,8 @@ class Teacher: public Student{
   std::string title;
   public:
   Teacher(const std::string&);
+  //Ina Saltovic
+  Teacher(unsigned int, std::string&, std::string&, std::string&, std::string&, char, std::string&, unsigned int, std::string&);
   void print()const;
   const std::string& getTitle()const {return title;}
 };
@@ -52,6 +56,8 @@ class Subject{
   
   public:
   Subject(const std::string&);
+  //Ina Saltovic
+  Subject(unsigned int, std::string&, unsigned int, std::string&);
   unsigned int getId()const{return id;}
   void print()const;
   void setYear(const std::string& y){year=y;}
@@ -68,6 +74,8 @@ class Department{
   linkedlist<unsigned int> subjects;
   public:
     Department(const std::string&);
+    //Ina Saltovic
+    Department(unsigned int, std::string&);
     unsigned int getId()const{return id;}
     void print()const;
     void addSubject(unsigned int id){subjects.push_back(id);}
