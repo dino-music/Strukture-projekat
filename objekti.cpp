@@ -3,12 +3,14 @@
 
 Student::Student(const std::string& line){
   std::stringstream sline(line);
-  int i=0;
+  int i=1;
   std::string info;
-  while(std::getline(sline,info,',')){
-  i++;
+  getline(sline,info,',');
+  id=stoi(info);
+  while(std::getline(sline,info,' ')){
+  getline(sline,info,',');
+  ++i;
   switch(i){
-    case 1: id=std::stoi(info); break;
     case 2: firstName=info; break;
     case 3: lastName=info; break;
     case 4: birthDate=info; break;
@@ -30,12 +32,14 @@ void Student::print()const{
 
 Teacher::Teacher(const std::string& line): Student(){
   std::stringstream sline(line);
-  int i=0;
+  int i=1;
   std::string info;
-  while(std::getline(sline,info,',')){
-  i++;
+  getline(sline,info,',');
+  id=stoi(info);
+  while(std::getline(sline,info,' ')){
+  getline(sline,info,',');
+  ++i;
   switch(i){
-    case 1: id=std::stoi(info); break;
     case 2: firstName=info; break;
     case 3: lastName=info; break;
     case 4: birthDate=info; break;
