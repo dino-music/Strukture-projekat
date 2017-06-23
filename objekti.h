@@ -47,7 +47,8 @@ class Subject{
     std::string abberv;
     std::string year;
     std::string semester;
-  unsigned int department;
+    unsigned int department;
+    linkedlist<unsigned int> teachers;
   
   public:
   Subject(const std::string&);
@@ -56,6 +57,7 @@ class Subject{
   void setYear(const std::string& y){year=y;}
   void setSemester(const std::string& s){semester=s;}
   void setDepartment(unsigned int dep){department=dep;}
+  void addTeacher(unsigned int id){teachers.push_back(id);}
 };
 
 
