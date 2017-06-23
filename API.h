@@ -36,7 +36,7 @@ typename linkedlist<T>::iterator API<T>::find(unsigned int key)
   //lambda funkcija za find metod linkane liste koji omogucava da se clanovi pretrazuju samo
   //po ID-u bez potrebe za kreiranje kompletnih objekata tipa student, ili profesor koji bi se 
   //koristili za poredjenje
-  auto lambda=[](const T& a, unsigned int b)->bool{return a.id==b;};
+  auto lambda=[](const T& a, unsigned int b)->bool{return a.getId()==b;};
   return api_[key%capacity_].template find<unsigned int>(key,lambda);
 }
 
@@ -55,7 +55,7 @@ bool API<T>::is_present(unsigned int key)
 template<typename T>
 bool API<T>::remove(unsigned int key)
 {
-  auto lambda=[](const T& a, unsigned int b)->bool{return a.id==b;};
+  auto lambda=[](const T& a, unsigned int b)->bool{return a.getId()==b;};
   return api_[key%capacity_].template remove<unsigned int>(key,lambda);
 }
 
