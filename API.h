@@ -43,8 +43,15 @@ void API<T>::parse(const std::string& fileName)
 
     while(std::getline(file,line))
     {
-      T temp(line);
-      push(temp.getId(),temp);
+      try
+      {
+        T temp(line);
+        push(temp.getId(),temp);
+      }
+      catch(std::exception& x)
+      {
+        std::cout << x.what();
+      }
     }
 }
 
