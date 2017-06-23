@@ -21,6 +21,7 @@ class API
     bool remove(unsigned int);
     template<typename F>
     void for_each(F);
+    typename linkedlist<T>::iterator end(){return api_[0].end();}
 };
 
 //Harun Muderizovic
