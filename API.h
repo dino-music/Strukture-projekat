@@ -1,6 +1,10 @@
 //Dino Music
 #pragma once
 #include"linkedlist.h"
+#include <fstream>
+#include <stdexcept>
+#include <string>
+#include <iostream>
 
 template<typename T>
 class API
