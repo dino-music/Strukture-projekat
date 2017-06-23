@@ -24,6 +24,8 @@ class linkedlist
     linkedlist(const linkedlist&);
     linkedlist(linkedlist&&);
     ~linkedlist();
+    //linkedlist& operator=(const linkedlist&);
+    linkedlist& operator=(linkedlist&&);
     linkedlist& push_back(const T&);
     class iterator;
     template<typename V>
@@ -166,4 +168,15 @@ linkedlist<T>::linkedlist(linkedlist &&lista):size_{lista.size_},first_{lista.fi
 {
   lista.first_=nullptr;
   lista.last_=nullptr;
+}
+
+template<typename T>
+linkedlist<T>& linkedlist<T>::operator=(linkedlist &&other)
+{
+  first_=other.first_;
+  last_=other.last_;
+  size_=other.size_;
+  other.size_=0;
+  other.first_=nullptr;
+  other.last_=nullptr;
 }
