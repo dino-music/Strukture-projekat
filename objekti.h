@@ -46,17 +46,19 @@ class Subject{
     std::string semester;
   public:
   Subject(const std::string&);
+  unsigned int getId()const{return id;}
   void print()const;
 };
 
 
 class Department{
   private:
-  unsigned int id;
-  std::string name;
+    unsigned int id;
+    std::string name;
   public:
- Department(const std::string&);
-void print()const;
+    Department(const std::string&);
+    unsigned int getId()const{return id;}
+    void print()const;
 
 };
 
