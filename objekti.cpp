@@ -30,6 +30,9 @@ Student::Student(const std::string& line){
   }
 }
 
+//Ina Saltovic
+Student::Student(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID) : id{ID}, firstName{ime}, lastName{prezime}, birthDate{datum}, email{mail}, gender{spol}, jmbg{JMBG}, depId{depID} {}
+
 void Student::print()const{
   std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
     jmbg<<" "<<depId<<" "<<std::endl;
@@ -64,6 +67,9 @@ Teacher::Teacher(const std::string& line): Student(){
   }  
 }
 
+//Ina Saltovic
+Teacher::Teacher(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID, std::string& titula) : Student{ID, ime, prezime, datum, mail, spol, JMBG, depID}, title{titula} {}
+
 void Teacher::print()const{
    std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
     jmbg<<" "<<title<<" "<<depId<<" "<<std::endl; 
@@ -86,6 +92,9 @@ Subject::Subject(const std::string& line){
 }
 }
 
+//Ina Saltovic
+Subject::Subject(unsigned int ID, std::string& ime, unsigned int ECTS, std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV} {}
+
 void Subject::print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<std::endl;
 }
@@ -99,6 +108,9 @@ Department::Department(const std::string& line){
   std::getline(sline,info,',');
   name=info;
 }
+
+//Ina Saltovic
+Department::Department(unsigned int ID, std::string& ime) : id{ID}, name{ime} {}
 
 void Department::print()const{
   std::cout<<id<<""<<name<<std::endl;
