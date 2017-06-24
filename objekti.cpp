@@ -162,7 +162,7 @@ Department::Department(unsigned int ID, std::string& ime) : id{ID}, name{ime} {}
 //Ina Saltovic
 void Department::file_output(std::ofstream& fajl){
   const std::string c = ", ";
-  fajl << id << c << name << endl;
+  fajl << id << c << name << std::endl;
 }
 
 void Department::print()const{
