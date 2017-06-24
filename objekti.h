@@ -17,6 +17,7 @@ class Student{
     std::string jmbg;
     unsigned int depId;
     std::list<unsigned int> subjects;
+    std::list<exam> Exams;
   public:
   Student()=default;
   Student(const std::string&);
