@@ -9,5 +9,9 @@
 bool isValid_mail(std::string mail);
 bool isValid_jmbg(std::string jmbg);
 //Harun Muderizovic
-void SubjTeach(subjectapi&, teacherapi&, const std::string&);
-void StudExams(studentapi&, const std::string&);
+void SubjTeach(subjectapi&, teacherapi&,std::string);
+void StudExams(studentapi&, std::string);
+//Vedad Mesic
+void depSubRead(subjectapi&, departmentapi&, std::string);
+//Dino Music
+void connect(studentapi&,teacherapi&,subjectapi&,departmentapi&);

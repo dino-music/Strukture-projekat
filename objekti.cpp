@@ -38,6 +38,19 @@ void Student::print()const{
     jmbg<<" "<<depId<<" "<<std::endl;
 
 }
+//Vedad Mešić
+//debug print metode u svakom objekti za ispis svih elemanata
+void Student::debug_print()const{
+  std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
+    jmbg<<" "<<depId<<" "<<"Subjects: ";
+  for(auto el: subjects )
+    std::cout<<el<<" ";
+  //Harun treba ubaciti exams
+  std::cout<<" Exams:";
+  for(auto el: exams)
+    el.print();
+  std::cout<<std::endl;
+}
 
 
 Teacher::Teacher(const std::string& line): Student(){
@@ -75,6 +88,16 @@ void Teacher::print()const{
     jmbg<<" "<<title<<" "<<depId<<" "<<std::endl; 
 }
 
+//Vedad Mešić
+void Teacher::debug_print()const{
+   std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
+    jmbg<<" "<<title<<" "<<depId<<" "<<"Subjects: ";
+   for(auto el: subjects)
+     std::cout<<el<<" ";
+   std::cout<<std::endl;
+}
+
+
 Subject::Subject(const std::string& line){
   std::stringstream sline(line);
   std::string info;
@@ -98,6 +121,13 @@ Subject::Subject(unsigned int ID, std::string& ime, unsigned int ECTS, std::stri
 void Subject::print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<std::endl;
 }
+//Vedad Mešić
+void Subject::debug_print()const{
+  std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<" "<<department<<" Teachers: ";
+  for(auto el : teachers)
+    std::cout<<el<<" ";
+  std::cout<<std::endl;
+}
 
 Department::Department(const std::string& line){
   std::stringstream sline(line);
@@ -114,4 +144,12 @@ Department::Department(unsigned int ID, std::string& ime) : id{ID}, name{ime} {}
 
 void Department::print()const{
   std::cout<<id<<""<<name<<std::endl;
+}
+
+//Vedad Mešić
+void Department::debug_print()const{
+  std::cout<<id<<""<<name<<" Subjects:";
+  for(auto el : subjects)
+    std::cout<<el<<" ";
+  std::cout<<std::endl;
 }

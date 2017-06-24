@@ -34,7 +34,7 @@ bool isValid_jmbg(std::string jmbg){
 
 
 //Harun Muderizovic
-void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
+void SubjTeach(subjectapi& subj, teacherapi& teach,std::string fileName)
 {
   std::fstream file(fileName);
   std::string line; 
@@ -63,7 +63,7 @@ void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
   file.close();
 }
 
-void StudExams(studentapi& stud, const std::string& fileName)
+void StudExams(studentapi& stud, std::string fileName)
 {
   std::fstream file(fileName);
   std::string line;
@@ -85,6 +85,56 @@ void StudExams(studentapi& stud, const std::string& fileName)
     if(itSTUD != stud.end())
       (*itSTUD).addExam(exam(subjID,tID,eval,date));  
   }
-
   file.close();
+}
+
+//Vedad Mešić
+void depSubRead(subjectapi& a, departmentapi& b, std::string c)
+{
+  std::string x;
+  std::fstream file(c);
+  while(!file.is_open()){
+    std::cout<<"Pogrešan unos. Unesite ponovo:"<<std::endl;
+    std::cin>>c;
+  }
+  getline(file,x);
+  while(getline(file,x)){
+    std::stringstream in;
+    std::string dep,sub,year,sem;
+    in<<x;
+    in>>dep;
+    in>>sub;
+    in>>year;
+    in>>sem;
+    unsigned int var=std::stoi(sub);
+    year=year.substr(0,year.size()-1);
+    auto it=a.find(var);
+   (*it).setDepartment(stoi(dep));
+    (*it).setYear(year);
+    (*it).setSemester(sem);
+    auto it2=b.find(stoi(dep));
+    (*it2).addSubject(stoi(sub));
+  }
+  file.close();
+}
+
+//Dino Music
+//Funkcija uspostavlja poveznice glavnih hash tabela. Ujedno povezuje hash tabele koje ce trebati izravan pristup
+//jedna drugoj
+void connect(studentapi& stud,teacherapi& teac,subjectapi& sub,departmentapi& dep)
+{
+  SubjTeach(sub,teac,"subjects-teachers.txt");
+  StudExams(stud,"students-subjects-teachers.txt");
+  depSubRead(sub,dep,"departments-subjects.txt");
+
+  stud.setSubjectAPI(&sub);
+  stud.setDepartmentAPI(&dep);
+
+  teac.setSubjectAPI(&sub);
+  teac.setDepartmentAPI(&dep);
+
+  sub.setDepartmentAPI(&dep);
+  sub.setStudentAPI(&stud);
+
+  dep.setSubjectAPI(&sub);
 }

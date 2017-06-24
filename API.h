@@ -133,5 +133,6 @@ struct exam
   std::string date;
 
   exam(unsigned int sID, unsigned int tID, int e, const std::string& d) : subjectId(sID),teacherId(tID),evaluation(e),date(d) {}
+  void print() const{std::cout<<subjectId<<" "<<teacherId<<" "<<evaluation<<" "<<date<<std::endl;}
 };
 
