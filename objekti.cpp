@@ -34,7 +34,7 @@ Student::Student(const std::string& line){
 Student::Student(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID) : id{ID}, firstName{ime}, lastName{prezime}, birthDate{datum}, email{mail}, gender{spol}, jmbg{JMBG}, depId{depID} {}
 
 //Ina Saltovic
-void Student::file_output(ofstream& fajl){
+void Student::file_output(std::ofstream& fajl){
   const std::string c = ", ";
   fajl << id << c << firstName << c << lastName << c << birthDate << c << email << c << gender << c << jmbg << c << depId << std::endl;
 }
@@ -87,7 +87,7 @@ Teacher::Teacher(const std::string& line): Student(){
 Teacher::Teacher(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID, std::string& titula) : Student{ID, ime, prezime, datum, mail, spol, JMBG, depID}, title{titula} {}
 
 //Ina Saltovic
-void Teacher::file_output(ofstream& fajl){
+void Teacher::file_output(std::ofstream& fajl){
   const std::string c = ", ";
   fajl << id << c << firstName << c << lastName << c << birthDate << c << email << c << gender << c << jmbg << c << title << c << depId << std::endl;
 }
@@ -126,7 +126,7 @@ Subject::Subject(const std::string& line){
 Subject::Subject(unsigned int ID, std::string& ime, unsigned int ECTS, std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV} {}
 
 //Ina Saltovic 
-void Subject::file_output(ofstream& fajl){
+void Subject::file_output(std::ofstream& fajl){
   const std::string c = ", ";
   fajl << id << c << name << c << ects << c << abberv << std::endl;
 }
@@ -140,7 +140,7 @@ void Subject::debug_print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<" "<<department<<std::endl<<" Teachers: ";
   for(auto el : teachers)
     std::cout<<el<<" ";
-  std::cout<<endl<<" Students:";
+  std::cout<<endl;
   for(auto el : students)
     std::cout<<el<<" ";
   std::cout<<std::endl<<std::endl;
@@ -160,7 +160,7 @@ Department::Department(const std::string& line){
 Department::Department(unsigned int ID, std::string& ime) : id{ID}, name{ime} {}
 
 //Ina Saltovic
-void Department::file_output(ofstream& fajl){
+void Department::file_output(std::ofstream& fajl){
   const std::string c = ", ";
   fajl << id << c << name << endl;
 }
