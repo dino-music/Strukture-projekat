@@ -32,10 +32,12 @@ class Student{
   char getGender()const{return gender;}
   unsigned int getDepId()const{return depId;}
   void print()const;
-  void debug_print()const;
   void addSubject(unsigned int id){subjects.push_back(id);}
   //Harun Muderizovic
   void addExam(const exam& e){exams.push_back(e);}
+  //Ina Saltovic
+  void file_output(ofstream&);
+
 };
 
 class Teacher: public Student{
@@ -46,8 +48,10 @@ class Teacher: public Student{
   //Ina Saltovic
   Teacher(unsigned int, std::string&, std::string&, std::string&, std::string&, char, std::string&, unsigned int, std::string&);
   void print()const;
-  void debug_print()const;
   const std::string& getTitle()const {return title;}
+  //Ina Saltovic
+  void file_output(ofstream&);
+
 };
 
 class Subject{
@@ -67,11 +71,13 @@ class Subject{
   Subject(unsigned int, std::string&, unsigned int, std::string&);
   unsigned int getId()const{return id;}
   void print()const;
-  void debug_print()const;
   void setYear(const std::string& y){year=y;}
   void setSemester(const std::string& s){semester=s;}
   void setDepartment(unsigned int dep){department=dep;}
   void addTeacher(unsigned int id){teachers.push_back(id);}
+  //Ina Saltovic
+  void file_output(ofstream&);
+
 };
 
 
@@ -86,8 +92,9 @@ class Department{
     Department(unsigned int, std::string&);
     unsigned int getId()const{return id;}
     void print()const;
-    void debug_print()const;
     void addSubject(unsigned int id){subjects.push_back(id);}
+    //Ina Saltovic
+    void file_output(ofstream&);
 
 };
 
