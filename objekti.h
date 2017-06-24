@@ -17,7 +17,7 @@ class Student{
     std::string jmbg;
     unsigned int depId;
     std::list<unsigned int> subjects;
-    std::list<exam> Exams;
+    std::list<exam> exams;
   public:
   Student()=default;
   Student(const std::string&);
@@ -34,7 +34,7 @@ class Student{
   void print()const;
   void addSubject(unsigned int id){subjects.push_back(id);}
   //Harun Muderizovic
-  void addExam(const exam& e){Exams.push_back(e);}
+  void addExam(const exam& e){exams.push_back(e);}
 };
 
 class Teacher: public Student{
