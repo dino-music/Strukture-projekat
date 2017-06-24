@@ -124,7 +124,7 @@ void depSubRead(subjectapi& a, departmentapi& b, std::string c)
 void connect(studentapi& stud,teacherapi& teac,subjectapi& sub,departmentapi& dep)
 {
   SubjTeach(sub,teac,"subjects-teachers.txt");
-  StudExams(stud,"students-subjects-teachers.txt");
+  StudExams(stud,sub,"students-subjects-teachers.txt");
   depSubRead(sub,dep,"departments-subjects.txt");
 
   stud.setSubjectAPI(&sub);
