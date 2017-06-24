@@ -31,7 +31,7 @@ Student::Student(const std::string& line){
 }
 
 //Ina Saltovic
-Student::Student(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID) : id{ID}, firstName{ime}, lastName{prezime}, birthDate{datum}, email{mail}, gender{spol}, jmbg{JMBG}, depId{depID} {}
+Student::Student(unsigned int ID, const std::string& ime, const std::string& prezime, const std::string& datum, const std::string& mail, char spol, const std::string& JMBG, unsigned int depID) : id{ID}, firstName{ime}, lastName{prezime}, birthDate{datum}, email{mail}, gender{spol}, jmbg{JMBG}, depId{depID} {}
 
 //Ina Saltovic
 void Student::file_output(std::ofstream& fajl){
@@ -84,7 +84,7 @@ Teacher::Teacher(const std::string& line): Student(){
 }
 
 //Ina Saltovic
-Teacher::Teacher(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID, std::string& titula) : Student{ID, ime, prezime, datum, mail, spol, JMBG, depID}, title{titula} {}
+Teacher::Teacher(unsigned int ID, const std::string& ime, const std::string& prezime, const std::string& datum, const std::string& mail, char spol, const std::string& JMBG, unsigned int depID, const std::string& titula) : Student{ID, ime, prezime, datum, mail, spol, JMBG, depID}, title{titula} {}
 
 //Ina Saltovic
 void Teacher::file_output(std::ofstream& fajl){
@@ -123,7 +123,7 @@ Subject::Subject(const std::string& line){
 }
 
 //Ina Saltovic
-Subject::Subject(unsigned int ID, std::string& ime, unsigned int ECTS, std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV} {}
+Subject::Subject(unsigned int ID, const std::string& ime, unsigned int ECTS, const std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV} {}
 
 //Ina Saltovic 
 void Subject::file_output(std::ofstream& fajl){
@@ -157,7 +157,7 @@ Department::Department(const std::string& line){
 }
 
 //Ina Saltovic
-Department::Department(unsigned int ID, std::string& ime) : id{ID}, name{ime} {}
+Department::Department(unsigned int ID, const std::string& ime) : id{ID}, name{ime} {}
 
 //Ina Saltovic
 void Department::file_output(std::ofstream& fajl){
