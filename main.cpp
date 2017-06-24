@@ -10,9 +10,17 @@ int main(void)
   subjectapi subjectAPI("subjects.txt");
   departmentapi departmentAPI("departments.txt");
   connect(studentAPI,teacherAPI,subjectAPI,departmentAPI);
-  studentAPI.for_each([](const Student& a){a.debug_print();});
-  teacherAPI.for_each([](const Teacher& a){a.debug_print();});
-  subjectAPI.for_each([](const Subject& a){a.debug_print();});
-  departmentAPI.for_each([](const Department& a){a.debug_print();});
+  //studentAPI.for_each([](const Student& a){a.print_fancy();});
+  studentAPI.getAll();
+  //teacherAPI.for_each([](const Teacher& a){a.print_fancy();});
+  teacherAPI.getAll();
+  //subjectAPI.for_each([](const Subject& a){a.print_fancy();});
+  subjectAPI.getAll();
+  //departmentAPI.for_each([](const Department& a){a.print_fancy();});
+  departmentAPI.getAll();
+  studentAPI.getOne(1);
+  studentAPI.getOne(4);
+  subjectAPI.getOne(2);
+  subjectAPI.getOne(5);
   return 0;
 }

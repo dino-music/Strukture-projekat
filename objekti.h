@@ -30,7 +30,8 @@ class Student{
   const std::string& getJmbg()const{return jmbg;}
   char getGender()const{return gender;}
   unsigned int getDepId()const{return depId;}
-  void print()const;
+  void print()const;//za printanje u jednoj liniji
+  void print_fancy()const;//za uredjenije printanje
   //Harun Muderizovic
   void addExam(const exam& e){exams.push_back(e);}
   //Ina Saltovic
@@ -51,6 +52,7 @@ class Teacher: public Student{
   //Ina Saltovic
   Teacher(unsigned int, const std::string&, const std::string&, const std::string&, const std::string&, char, const std::string&, unsigned int, const std::string&);
   void print()const;
+  void print_fancy()const;
   const std::string& getTitle()const {return title;}
   //Ina Saltovic
   void file_output(std::ofstream&);
@@ -77,6 +79,7 @@ class Subject{
   Subject(unsigned int, const std::string&, unsigned int, const std::string&);
   unsigned int getId()const{return id;}
   void print()const;
+  void print_fancy()const;
   void setYear(const std::string& y){year=y;}
   void setSemester(const std::string& s){semester=s;}
   void setDepartment(unsigned int dep){department=dep;}
@@ -102,6 +105,7 @@ class Department{
     Department(unsigned int, const std::string&);
     unsigned int getId()const{return id;}
     void print()const;
+    void print_fancy()const;
     void addSubject(unsigned int id){subjects.push_back(id);}
     //Ina Saltovic
     void file_output(std::ofstream&);
