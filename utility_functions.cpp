@@ -40,10 +40,10 @@ void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
   std::string line; 
   unsigned int sID, tID;
   char zarez;
-  std::stringstream ss;
-  std::getline(file,line); // prva linija u fajlu
+  std::stringstream ss;  // svaku liniju učitavamo u stringstream i iz njega jedan po jedan podatak
+  std::getline(file,line); // učitavanje prve linije, sa rasporedom kolona
 
-  while(getline(file,line)) // za ostale linije
+  while(getline(file,line)) // obrada ostalih linija
   {
     ss << line;
 
@@ -60,5 +60,31 @@ void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
 
   }
   
+  file.close();
+}
+
+void StudExams(studentapi& stud, const std::string fileName)
+{
+  std::fstream file(fileName);
+  std::string line;
+  unsigned int studID, subjID, tID;
+  int eval;
+  char zarez;
+  std::string date;
+  std::stringstream ss; // svaku liniju učitavamo u stringstream i iz njega jedan po jedan podatak
+  std::getline(file,line); // učitavanje prve linije, sa rasporedom kolona
+  
+  while(getline(file,line)) // obrada ostalih linija
+  {
+    ss << line;
+
+    ss >> studID >> zarez >> subjID >> zarez >> tID >> zarez >> eval >> zarez >> date;
+
+    auto itSTUD = stud.find(studID);
+    // ako student postoji u listi
+    if(itSTUD != stud.end())
+      (*itSTUD).addExam(exam(subjID,tID,eval,date));  
+  }
+
   file.close();
 }
