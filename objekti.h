@@ -21,7 +21,7 @@ class Student{
   Student()=default;
   Student(const std::string&);
   //Ina Saltovic
-  Student(unsigned int, std::string&, std::string&, std::string&, std::string&, char, std::string&, unsigned int);
+  Student(unsigned int, const std::string&, const std::string&, const std::string&, const std::string&, char, const std::string&, unsigned int);
   unsigned int getId()const{return id;}
   const std::string& getFirstName()const {return firstName;}
   const std::string& getLastName()const{return lastName;}
@@ -49,7 +49,7 @@ class Teacher: public Student{
   //Harun Muderizovic
   void addSubject(unsigned int id){subjects.push_back(id);}
   //Ina Saltovic
-  Teacher(unsigned int, std::string&, std::string&, std::string&, std::string&, char, std::string&, unsigned int, std::string&);
+  Teacher(unsigned int, const std::string&, const std::string&, const std::string&, const std::string&, char, const std::string&, unsigned int, const std::string&);
   void print()const;
   const std::string& getTitle()const {return title;}
   //Ina Saltovic
@@ -74,7 +74,7 @@ class Subject{
   public:
   Subject(const std::string&);
   //Ina Saltovic
-  Subject(unsigned int, std::string&, unsigned int, std::string&);
+  Subject(unsigned int, const std::string&, unsigned int, const std::string&);
   unsigned int getId()const{return id;}
   void print()const;
   void setYear(const std::string& y){year=y;}
@@ -99,7 +99,7 @@ class Department{
   public:
     Department(const std::string&);
     //Ina Saltovic
-    Department(unsigned int, std::string&);
+    Department(unsigned int, const std::string&);
     unsigned int getId()const{return id;}
     void print()const;
     void addSubject(unsigned int id){subjects.push_back(id);}
