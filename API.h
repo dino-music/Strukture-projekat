@@ -12,10 +12,12 @@ class API
   protected:
     unsigned int capacity_;
     linkedlist<T> *api_;
+    std::string file_;
 
   public:
     API(unsigned int c):capacity_{c},api_{new linkedlist<T>[capacity_]}{}
     API():API(113u){};
+    API(std::string);
     ~API();
     void parse(const std::string&);
     void push(unsigned int,const T&);
@@ -30,7 +32,7 @@ class API
 
 //Harun Muderizovic
 template<typename T>
-void API<T>::parse(const std::string& fileName)
+API<T>::API(std::string fileName):API()
 {
     std::fstream file(fileName);
     try
@@ -42,7 +44,7 @@ void API<T>::parse(const std::string& fileName)
     {
         std::cout << x.what();
     }
-
+    file_=fileName;
     std::string line;
     std::getline(file,line);
 

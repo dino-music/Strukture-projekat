@@ -16,6 +16,7 @@ class studentapi:public API<Student>
     departmentapi* departmentAPI;
 
   public:
+    studentapi(std::string s):API(s){}
     void setSubjectAPI(subjectapi *reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi *reff){departmentAPI=reff;}
 };
@@ -27,6 +28,7 @@ class teacherapi:public API<Teacher>
     departmentapi* departmentAPI;
 
   public:
+    teacherapi(std::string s):API(s){}
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
 };
@@ -38,6 +40,7 @@ class subjectapi:public API<Subject>
     studentapi* studentAPI;
   
   public:
+    subjectapi(std::string s):API(s){}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     void setStudentAPI(studentapi* reff){studentAPI=reff;}
 };
@@ -49,5 +52,6 @@ class departmentapi:public API<Department>
     subjectapi* subjectAPI;
 
   public:
+    departmentapi(std::string s):API(s){}
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
 };

@@ -1,8 +1,9 @@
-//#pragma once
+#pragma once
 #include<string>
 #include<sstream>
 #include <iostream>
 #include "linkedlist.h"
+#include<list>
 //Emina Mahmutbegovic
 class Student{
   protected:
@@ -14,7 +15,7 @@ class Student{
     char gender;
     std::string jmbg;
     unsigned int depId;
-  linkedlist<unsigned int> subjects;
+    std::list<unsigned int> subjects;
   public:
   Student()=default;
   Student(const std::string&);
@@ -52,7 +53,7 @@ class Subject{
     std::string year;
     std::string semester;
     unsigned int department;
-    linkedlist<unsigned int> teachers;
+    std::list<unsigned int> teachers;
   
   public:
   Subject(const std::string&);
@@ -71,7 +72,7 @@ class Department{
   private:
     unsigned int id;
     std::string name;
-  linkedlist<unsigned int> subjects;
+    std::list<unsigned int> subjects;
   public:
     Department(const std::string&);
     //Ina Saltovic

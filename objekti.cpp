@@ -22,7 +22,7 @@ Student::Student(const std::string& line){
             break;
     case 6: gender=info[0]; break;
     case 7: if(!isValid_jmbg(info))
-            throw std::invalid_argument("pogresan unos jmbg");
+              throw std::invalid_argument("pogresan unos jmbg");
             jmbg=info; break;
     case 8: depId=stoi(info); break; 
 

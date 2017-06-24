@@ -22,7 +22,7 @@ bool isValid_jmbg(std::string jmbg){
     JMBG.push_back(jmbg[i]-'0'); //pretvaranje char-ova u int-ove i stavljanje u vektor
 
   //formula za racunanje kontrolnog(zadnjeg) broja jbmg-a
-  int m = 11 - ((7*(JMBG[0]*JMBG[6]) + 6*(JMBG[1]+JMBG[7]) + 5*(JMBG[2]+JMBG[8]) + 4*(JMBG[3]+JMBG[9]) + 3*(JMBG[4]+JMBG[10]) + 2*(JMBG[5]+JMBG[11])) % 11);
+  int m = ((7*(JMBG[0]+JMBG[6]) + 6*(JMBG[1]+JMBG[7]) + 5*(JMBG[2]+JMBG[8]) + 4*(JMBG[3]+JMBG[9]) + 3*(JMBG[4]+JMBG[10]) + 2*(JMBG[5]+JMBG[11])) % 11);
   //uslijed postojanja dva nacina za racunanje kontrolnog broja, moraju se provjeriti obje mogucnosti
   int n=m;
   if(n>1)
