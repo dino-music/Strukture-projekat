@@ -38,11 +38,13 @@ class subjectapi:public API<Subject>
   private:
     departmentapi* departmentAPI;
     studentapi* studentAPI;
+    teacherapi* teacherAPI;
   
   public:
     subjectapi(std::string s):API(s){}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     void setStudentAPI(studentapi* reff){studentAPI=reff;}
+    void setTeacherAPI(teacherapi* reff){teacherAPI=reff;}
 };
 
 

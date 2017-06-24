@@ -140,6 +140,7 @@ void connect(studentapi& stud,teacherapi& teac,subjectapi& sub,departmentapi& de
 
   sub.setDepartmentAPI(&dep);
   sub.setStudentAPI(&stud);
+  sub.setTeacherAPI(&teac);
 
   dep.setSubjectAPI(&sub);
 }
