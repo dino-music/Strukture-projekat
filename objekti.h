@@ -31,6 +31,8 @@ class Student{
   unsigned int getDepId()const{return depId;}
   void print()const;
   void addSubject(unsigned int id){subjects.push_back(id);}
+  //Harun Muderizovic
+  void addExam(const exam& e){Exams.push_back(e);}
 };
 
 class Teacher: public Student{
