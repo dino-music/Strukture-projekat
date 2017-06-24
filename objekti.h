@@ -37,6 +37,8 @@ class Student{
   void addExam(const exam& e){exams.push_back(e);}
   //Ina Saltovic
   void file_output(ofstream&);
+  //Vedad Mešić
+  void debug_print()const;
 
 };
 
@@ -51,6 +53,8 @@ class Teacher: public Student{
   const std::string& getTitle()const {return title;}
   //Ina Saltovic
   void file_output(ofstream&);
+   //Vedad Mešić
+  void debug_print()const;
 
 };
 
@@ -77,6 +81,8 @@ class Subject{
   void addTeacher(unsigned int id){teachers.push_back(id);}
   //Ina Saltovic
   void file_output(ofstream&);
+   //Vedad Mešić
+  void debug_print()const;
 
 };
 
@@ -95,6 +101,8 @@ class Department{
     void addSubject(unsigned int id){subjects.push_back(id);}
     //Ina Saltovic
     void file_output(ofstream&);
+   //Vedad Mešić
+  void debug_print()const;
 
 };
 
