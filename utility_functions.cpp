@@ -63,7 +63,7 @@ void SubjTeach(subjectapi& subj, teacherapi& teach,std::string fileName)
   file.close();
 }
 
-void StudExams(studentapi& stud, std::string fileName)
+void StudExams(studentapi& stud, subjectapi& subj, std::string fileName)
 {
   std::fstream file(fileName);
   std::string line;
@@ -81,10 +81,15 @@ void StudExams(studentapi& stud, std::string fileName)
     ss >> studID >> zarez >> subjID >> zarez >> tID >> zarez >> eval >> zarez >> date;
 
     auto itSTUD = stud.find(studID);
-    // ako student postoji u listi
-    if(itSTUD != stud.end())
-      (*itSTUD).addExam(exam(subjID,tID,eval,date));  
+    auto itSUBJ = subj.find(subjID); 
+    // ako objekti postoje
+    if(itSTUD != stud.end() && itSUBJ != subj.end())
+    {
+      (*itSTUD).addExam(exam(subjID,tID,eval,date));
+      (*itSUBJ).addStudent(studID);
+    }  
   }
+
   file.close();
 }
 
