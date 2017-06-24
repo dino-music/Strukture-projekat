@@ -63,7 +63,7 @@ void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
   file.close();
 }
 
-void StudExams(studentapi& stud, const std::string fileName)
+void StudExams(studentapi& stud, const std::string& fileName)
 {
   std::fstream file(fileName);
   std::string line;
