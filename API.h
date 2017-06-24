@@ -123,3 +123,15 @@ void API<T>::for_each(F lambda)
       lambda(*it);
   }
 }
+
+//Harun Muderizovic
+struct exam
+{
+  unsigned int subjectId;
+  unsigned int teacherId;
+  int evaluation;
+  std::string date;
+
+  exam(unsigned int sID, unsigned int tID, int e, const std::string& d) : subjectId(sID),teacherId(tID),evaluation(e),date(d) {}
+};
+
