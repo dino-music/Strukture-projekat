@@ -48,11 +48,9 @@ void Student::print()const{
 //debug print metode u svakom objekti za ispis svih elemanata
 void Student::debug_print()const{
   std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
-    jmbg<<" "<<depId<<" "<<std::endl<<" Subjects: ";
-  for(auto el: subjects )
-    std::cout<<el<<" ";
+    jmbg<<" "<<depId<<" "<<std::endl;
   //Harun treba ubaciti exams
-  std::cout<<std::endl<<" Exams:";
+  std::cout<<" Exams:";
   for(auto el: exams)
     el.print();
   std::cout<<std::endl<<std::endl;
@@ -141,6 +139,9 @@ void Subject::print()const{
 void Subject::debug_print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<" "<<department<<std::endl<<" Teachers: ";
   for(auto el : teachers)
+    std::cout<<el<<" ";
+  std::cout<<endl;
+  for(auto el : students)
     std::cout<<el<<" ";
   std::cout<<std::endl<<std::endl;
 }
