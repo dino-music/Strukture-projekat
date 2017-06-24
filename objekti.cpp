@@ -43,14 +43,14 @@ void Student::print()const{
   std::cout<<id<<", "<<firstName<<", "<<lastName<<", "<<birthDate<<", "<<email<<", "<<gender<<", "<<jmbg<<", "<<depId<<std::endl;
 }
 
-void Student::print_fancy()const{
+void Student::print_fancy(std::string dep)const{
   std::cout<<"ID: "<<id<<std::endl;
   std::cout<<"Ime, prezime: "<<firstName<<", "<<lastName<<std::endl;
   std::cout<<"Rodjendan: "<<birthDate<<std::endl;
   std::cout<<"E-mail: "<<email<<std::endl;
   std::cout<<"Spol: "<<gender<<std::endl;
   std::cout<<"JMBG: "<<jmbg<<std::endl;
-  std::cout<<"ID odsjeka: "<<depId<<std::endl;
+  std::cout<<"Odsjek: "<<dep<<std::endl;
   std::cout<<std::endl;
 }
 //Vedad Mešić
@@ -106,7 +106,7 @@ void Teacher::print()const{
     jmbg<<", "<<title<<", "<<depId<<", "<<std::endl; 
 }
 
-void Teacher::print_fancy()const{
+void Teacher::print_fancy(std::string dep)const{
   std::cout<<"ID: "<<id<<std::endl;
   std::cout<<"Ime, prezime: "<<firstName<<", "<<lastName<<std::endl;
   std::cout<<"Rodjendan: "<<birthDate<<std::endl;
@@ -114,7 +114,7 @@ void Teacher::print_fancy()const{
   std::cout<<"Spol: "<<gender<<std::endl;
   std::cout<<"JMBG: "<<jmbg<<std::endl;
   std::cout<<"Titula: "<<title<<std::endl;
-  std::cout<<"ID odsjeka: "<<depId<<std::endl;
+  std::cout<<"Odsjek: "<<dep<<std::endl;
   std::cout<<std::endl;
 }
 //Vedad Mešić

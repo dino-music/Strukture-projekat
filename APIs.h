@@ -20,7 +20,7 @@ class studentapi:public API<Student>
     void setSubjectAPI(subjectapi *reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi *reff){departmentAPI=reff;}
     void getAll(){printall("ID, Ime, Prezime, Rodjendan, E-mail, spol, JMBG, ID odsjeka");}
-    void getOne(unsigned int key){printone(key,"student");}
+    void getOne(unsigned int key);
 };
 
 class teacherapi:public API<Teacher>
@@ -34,7 +34,7 @@ class teacherapi:public API<Teacher>
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     void getAll(){printall("ID, Ime, Prezime, Rodjendan, E-mail, Spol, JMBG, Titula, ID odsjeka");}
-    void getOne(unsigned int key){printone(key,"profesor");}
+    void getOne(unsigned int key);
 };
 
 class subjectapi:public API<Subject>
