@@ -33,23 +33,16 @@ Student::Student(const std::string& line){
 //Ina Saltovic
 Student::Student(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID) : id{ID}, firstName{ime}, lastName{prezime}, birthDate{datum}, email{mail}, gender{spol}, jmbg{JMBG}, depId{depID} {}
 
+//Ina Saltovic
+void Student::file_output(ofstream& fajl){
+  const std::string c = ", ";
+  fajl << id << c << firstName << c << lastName << c << birthDate << c << email << c << gender << c << jmbg << c << depId << std::endl;
+}
+
 void Student::print()const{
   std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
     jmbg<<" "<<depId<<" "<<std::endl;
 
-}
-//Vedad Mešić
-//debug print metode u svakom objekti za ispis svih elemanata
-void Student::debug_print()const{
-  std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
-    jmbg<<" "<<depId<<" "<<"Subjects: ";
-  for(auto el: subjects )
-    std::cout<<el<<" ";
-  //Harun treba ubaciti exams
-  std::cout<<" Exams:";
-  for(auto el: exams)
-    el.print();
-  std::cout<<std::endl;
 }
 
 
@@ -83,20 +76,16 @@ Teacher::Teacher(const std::string& line): Student(){
 //Ina Saltovic
 Teacher::Teacher(unsigned int ID, std::string& ime, std::string& prezime, std::string& datum, std::string& mail, char spol, std::string& JMBG, unsigned int depID, std::string& titula) : Student{ID, ime, prezime, datum, mail, spol, JMBG, depID}, title{titula} {}
 
+//Ina Saltovic
+void Teacher::file_output(ofstream& fajl){
+  const std::string c = ", ";
+  fajl << id << c << firstName << c << lastName << c << birthDate << c << email << c << gender << c << jmbg << c << title << c << depId << std::endl;
+}
+
 void Teacher::print()const{
    std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
     jmbg<<" "<<title<<" "<<depId<<" "<<std::endl; 
 }
-
-//Vedad Mešić
-void Teacher::debug_print()const{
-   std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
-    jmbg<<" "<<title<<" "<<depId<<" "<<"Subjects: ";
-   for(auto el: subjects)
-     std::cout<<el<<" ";
-   std::cout<<std::endl;
-}
-
 
 Subject::Subject(const std::string& line){
   std::stringstream sline(line);
@@ -118,15 +107,15 @@ Subject::Subject(const std::string& line){
 //Ina Saltovic
 Subject::Subject(unsigned int ID, std::string& ime, unsigned int ECTS, std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV} {}
 
+//Ina Saltovic 
+void Subject::file_output(ofstream& fajl){
+  const std::string c = ", ";
+  fajl << id << c << name << c << ects << c << abberv << std::endl;
+}
+
+
 void Subject::print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<std::endl;
-}
-//Vedad Mešić
-void Subject::debug_print()const{
-  std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<" "<<department<<" Teachers: ";
-  for(auto el : teachers)
-    std::cout<<el<<" ";
-  std::cout<<std::endl;
 }
 
 Department::Department(const std::string& line){
@@ -142,14 +131,12 @@ Department::Department(const std::string& line){
 //Ina Saltovic
 Department::Department(unsigned int ID, std::string& ime) : id{ID}, name{ime} {}
 
-void Department::print()const{
-  std::cout<<id<<""<<name<<std::endl;
+//Ina Saltovic
+void Department::file_output(ofstream& fajl){
+  const std::string c = ", ";
+  fajl << id << c << name << endl;
 }
 
-//Vedad Mešić
-void Department::debug_print()const{
-  std::cout<<id<<""<<name<<" Subjects:";
-  for(auto el : subjects)
-    std::cout<<el<<" ";
-  std::cout<<std::endl;
+void Department::print()const{
+  std::cout<<id<<""<<name<<std::endl;
 }
