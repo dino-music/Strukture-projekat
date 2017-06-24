@@ -44,7 +44,19 @@ void Student::print()const{
     jmbg<<" "<<depId<<" "<<std::endl;
 
 }
-
+//Vedad Mešić
+//debug print metode u svakom objekti za ispis svih elemanata
+void Student::debug_print()const{
+  std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
+    jmbg<<" "<<depId<<" "<<std::endl<<" Subjects: ";
+  for(auto el: subjects )
+    std::cout<<el<<" ";
+  //Harun treba ubaciti exams
+  std::cout<<std::endl<<" Exams:";
+  for(auto el: exams)
+    el.print();
+  std::cout<<std::endl<<std::endl;
+}
 
 Teacher::Teacher(const std::string& line): Student(){
   std::stringstream sline(line);
@@ -86,6 +98,14 @@ void Teacher::print()const{
    std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
     jmbg<<" "<<title<<" "<<depId<<" "<<std::endl; 
 }
+//Vedad Mešić
+void Teacher::debug_print()const{
+   std::cout<<id<<" "<<firstName<<" "<<lastName<<" "<<birthDate<<" "<<email<<" "<<gender<<" "<<
+    jmbg<<" "<<title<<" "<<depId<<" "<<std::endl<<" Subjects: ";
+   for(auto el: subjects)
+     std::cout<<el<<" ";
+   std::cout<<std::endl<<std::endl;
+}
 
 Subject::Subject(const std::string& line){
   std::stringstream sline(line);
@@ -117,6 +137,13 @@ void Subject::file_output(ofstream& fajl){
 void Subject::print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<std::endl;
 }
+//Vedad Mešić
+void Subject::debug_print()const{
+  std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<" "<<department<<std::endl<<" Teachers: ";
+  for(auto el : teachers)
+    std::cout<<el<<" ";
+  std::cout<<std::endl<<std::endl;
+}
 
 Department::Department(const std::string& line){
   std::stringstream sline(line);
@@ -139,4 +166,11 @@ void Department::file_output(ofstream& fajl){
 
 void Department::print()const{
   std::cout<<id<<""<<name<<std::endl;
+}
+//Vedad Mešić
+void Department::debug_print()const{
+  std::cout<<id<<" "<<name<<std::endl<<" Subjects:";
+  for(auto el : subjects)
+    std::cout<<el<<" ";
+  std::cout<<std::endl<<std::endl;
 }
