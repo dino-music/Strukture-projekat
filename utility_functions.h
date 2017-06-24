@@ -8,4 +8,6 @@
 
 bool isValid_mail(std::string mail);
 bool isValid_jmbg(std::string jmbg);
+//Harun Muderizovic
 void SubjTeach(subjectapi&, teacherapi&, const std::string&);
+void StudExams(studentapi&, const std::string&);
