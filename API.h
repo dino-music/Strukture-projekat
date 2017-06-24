@@ -28,6 +28,8 @@ class API
     template<typename F>
     void for_each(F);
     typename linkedlist<T>::iterator end(){return api_[0].end();}
+    void printone(unsigned int,std::string);
+    void printall(std::string);
 };
 
 //Harun Muderizovic
@@ -122,6 +124,25 @@ void API<T>::for_each(F lambda)
     for(auto it=api_[i].begin();it!=e;++it)
       lambda(*it);
   }
+}
+
+template<typename T>
+void API<T>::printone(unsigned int key,std::string obj)
+{
+  auto it=find(key);
+  if(it==end())
+    std::cout<<"Nije pronadjen "<<obj<<" sa kljucem "<<key<<std::endl;
+  else
+    (*it).print_fancy();
+}
+
+template<typename T>
+void API<T>::printall(std::string header)
+{
+  std::cout<<header<<std::endl;
+  std::cout<<std::string(header.size(),'-')<<std::endl;
+  for_each([](const T& a){a.print();});
+  std::cout<<std::endl;
 }
 
 //Harun Muderizovic
