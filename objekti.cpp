@@ -140,7 +140,7 @@ void Subject::debug_print()const{
   std::cout<<id<<" "<<name<<" "<<ects<<" "<<abberv<<" "<<year<<" "<<semester<<" "<<department<<std::endl<<" Teachers: ";
   for(auto el : teachers)
     std::cout<<el<<" ";
-  std::cout<<endl;
+  std::cout<<std::endl<<" Students: ";
   for(auto el : students)
     std::cout<<el<<" ";
   std::cout<<std::endl<<std::endl;
