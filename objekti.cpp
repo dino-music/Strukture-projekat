@@ -154,7 +154,7 @@ void Subject::file_output(std::ofstream& fajl){
 
 
 void Subject::print()const{
-  std::cout<<id<<", "<<name<<", "<<ects<<", "<<abberv<<std::endl;
+  std::cout<<id<<", "<<name<<", "<<year<<", "<<semester<<", "<<ects<<", "<<abberv<<std::endl;
 }
 
 void Subject::print_fancy()const{
