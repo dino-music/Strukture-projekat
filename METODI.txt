@@ -1,0 +1,55 @@
+department api
+    1.dohvatanje pojedinačnog departmenta po id-u - DONE
+	2.printanje svih departmenta - DONE
+	3.metod za dodavanje departmenta
+	4.metod koji uklanja department
+		prođi kroz subjecte tog departmenta
+		prolazeć kroz subjecte, prođi kroz profesore i studente koji drže taj department i otkloni ih, nakon čega ćeš otkloniti i subjecte departmenta, te na kraju i department
+	5.metod za output u departments.txt
+	BONUS promjena imena departmenta-po istom principu ko ovo iznad
+	BONUS ispis departmenta sa ispisom predmeta u tom departmentu
+	
+subject api
+    6.dohvatanje predmeta po id-u -DONE
+	7.ispis svih predmeta - DONE 
+	8.dohvati spisak studenata koji slušaju predmeta
+	9.spisak profa koji drže predmet 
+	10.obriši predmet
+		ukloni predmet u departmentu
+		ukloni predmet kod profesora 
+		ukloni predmet kod studenta
+	11.dodavanje predmeta
+	12.dodavanje profesora predmetu
+		treba provjeriti da li profesor koji se dodaje postoji u listi profesora
+	13.otklanjanje profesora s predmeta 
+		uklonit iz liste profesora u predmetu
+		uklonit predmet iz liste predmeta profesora
+	14.metod za output u subjects.txt
+	BONUS:promjena ects kredita
+	
+profesor
+	15.dohvatanje jednog profesora po id-u - DONE
+	16.ispis svih profesora - DONE
+	17.ispis predmeta koje drži
+	18.promjena titule 
+	19.dodati predmet profesoru
+	20.ukloniti predmet profesoru
+		provjeriti prvo da li predmet postoji
+		ovi metodi su slični gore navedenim za subject
+	21.metod za output u teachers.txt
+	BONUS: promjena departmenta
+	BONUS: promjena prezimena
+	
+student
+	22.dohvatanje jednog studenta - DONE
+	23.ispis svih studenata - DONE
+	24.Ispis ispita koje je položio
+	25.Ispis ispita koje nije položio
+	26.Dodavanje studenta
+		Provjeriti da li postoji department koji je unešen sa studentom, ako ne postoji, ponuditi korisniku mogućnost da prvo unese department
+	27.Uklanjanje studenta
+		Potrebno je ukloniti ga iz liste predmeta koje sluša, prije nego što se ukloni iz liste studenata
+	28.Promjena prezimena
+	
+	
+	
