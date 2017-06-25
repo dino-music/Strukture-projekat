@@ -54,6 +54,7 @@ class subjectapi:public API<Subject>
     void getAll(){printall("ID, Ime, ECTS krediti, Skracenica");}
     void getOne(unsigned int key){printone(key,"predmet");}
     void getStudents(unsigned int);
+    void getTeachers(unsigned int);
 };
 
 
