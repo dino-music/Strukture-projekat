@@ -5,7 +5,7 @@ department api
 	4.metod koji uklanja department
 		prođi kroz subjecte tog departmenta
 		prolazeć kroz subjecte, prođi kroz profesore i studente koji drže taj department i otkloni ih, nakon čega ćeš otkloniti i subjecte departmenta, te na kraju i department
-	5.metod za output u departments.txt
+	5.metod za output u departments.txt - DONE
 	BONUS promjena imena departmenta-po istom principu ko ovo iznad
 	BONUS ispis departmenta sa ispisom predmeta u tom departmentu
 	
@@ -24,7 +24,7 @@ subject api
 	13.otklanjanje profesora s predmeta 
 		uklonit iz liste profesora u predmetu
 		uklonit predmet iz liste predmeta profesora
-	14.metod za output u subjects.txt
+	14.metod za output u subjects.txt - DONE
 	BONUS:promjena ects kredita
 	
 profesor
@@ -36,7 +36,7 @@ profesor
 	20.ukloniti predmet profesoru
 		provjeriti prvo da li predmet postoji
 		ovi metodi su slični gore navedenim za subject
-	21.metod za output u teachers.txt
+	21.metod za output u teachers.txt - DONE
 	BONUS: promjena departmenta
 	BONUS: promjena prezimena
 	
@@ -49,7 +49,10 @@ student
 		Provjeriti da li postoji department koji je unešen sa studentom, ako ne postoji, ponuditi korisniku mogućnost da prvo unese department
 	27.Uklanjanje studenta
 		Potrebno je ukloniti ga iz liste predmeta koje sluša, prije nego što se ukloni iz liste studenata
-	28.Promjena prezimena
+	28.metod za output u departments.txt - DONE
+	29.Promjena prezimena
+	
+Funkcije za formiranje outputa međutabela - DONE
 	
 	
 	
