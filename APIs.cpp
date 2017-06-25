@@ -1,6 +1,25 @@
 //Dino Music
 #include"APIs.h"
 
+std::string studentapi::getDep(unsigned int key)
+{
+  auto it=departmentAPI->find(key);//pronadjemo department sa adekvatnim ID-em
+  return (*it).getName();//vracamo ime departmenta
+}
+
+void studentapi::getAll()
+{
+  std::string header="ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Odsjek";
+  std::cout<<header<<std::endl;
+  std::cout<<std::string(header.size(),'-')<<std::endl;
+  auto lambda=[=](const Student &a){
+    a.print();
+    std::cout<<getDep(a.getDepId())<<std::endl;
+  };
+  for_each(lambda);
+  std::cout<<std::endl;
+}
+
 void studentapi::getOne(unsigned int key)
 {
   auto it=find(key);
@@ -14,6 +33,25 @@ void studentapi::getOne(unsigned int key)
     std::string dep=(*i).getName();//Dohvatimo naziv departmenta koji smo maloprije pronasli
     (*it).print_fancy(dep);
 
+}
+
+std::string teacherapi::getDep(unsigned int key)
+{
+  auto it=departmentAPI->find(key);//pronadjemo department sa adekvatnim ID-em
+  return (*it).getName();//vracamo ime departmenta
+}
+
+void teacherapi::getAll()
+{
+  std::string header="ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Titula, Odsjek";
+  std::cout<<header<<std::endl;
+  std::cout<<std::string(header.size(),'-')<<std::endl;
+  auto lambda=[=](const Teacher &a){
+    a.print();
+    std::cout<<getDep(a.getDepId())<<std::endl;
+  };
+  for_each(lambda);
+  std::cout<<std::endl;
 }
 
 void teacherapi::getOne(unsigned int key)
@@ -48,9 +86,11 @@ void subjectapi::getStudents(unsigned int key)
     {
       auto it=studentAPI->find(i);
       (*it).print();
+      std::cout<<studentAPI->getDep((*it).getDepId())<<std::endl;
     }
   std::cout<<std::endl;
 }
+
 
 
 

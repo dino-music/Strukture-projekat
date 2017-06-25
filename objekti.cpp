@@ -40,13 +40,13 @@ void Student::file_output(std::ofstream& fajl){
 }
 
 void Student::print()const{
-  std::cout<<id<<", "<<firstName<<", "<<lastName<<", "<<birthDate<<", "<<email<<", "<<gender<<", "<<jmbg<<", "<<depId<<std::endl;
+  std::cout<<id<<", "<<firstName<<", "<<lastName<<", "<<birthDate<<", "<<email<<", "<<gender<<", "<<jmbg<<", ";
 }
 
 void Student::print_fancy(std::string dep)const{
   std::cout<<"ID: "<<id<<std::endl;
   std::cout<<"Ime, prezime: "<<firstName<<", "<<lastName<<std::endl;
-  std::cout<<"Rodjendan: "<<birthDate<<std::endl;
+  std::cout<<"Datum rodjenja: "<<birthDate<<std::endl;
   std::cout<<"E-mail: "<<email<<std::endl;
   std::cout<<"Spol: "<<gender<<std::endl;
   std::cout<<"JMBG: "<<jmbg<<std::endl;
@@ -103,13 +103,13 @@ void Teacher::file_output(std::ofstream& fajl){
 
 void Teacher::print()const{
    std::cout<<id<<", "<<firstName<<", "<<lastName<<", "<<birthDate<<", "<<email<<", "<<gender<<", "<<
-    jmbg<<", "<<title<<", "<<depId<<", "<<std::endl; 
+    jmbg<<", "<<title<<", "; 
 }
 
 void Teacher::print_fancy(std::string dep)const{
   std::cout<<"ID: "<<id<<std::endl;
   std::cout<<"Ime, prezime: "<<firstName<<", "<<lastName<<std::endl;
-  std::cout<<"Rodjendan: "<<birthDate<<std::endl;
+  std::cout<<"Datum rodjenja: "<<birthDate<<std::endl;
   std::cout<<"E-mail: "<<email<<std::endl;
   std::cout<<"Spol: "<<gender<<std::endl;
   std::cout<<"JMBG: "<<jmbg<<std::endl;
@@ -162,6 +162,8 @@ void Subject::print_fancy()const{
   std::cout<<"Ime: "<<name<<std::endl;
   std::cout<<"ECTS krediti: "<<ects<<std::endl;
   std::cout<<"Skracenica: "<<abberv<<std::endl;
+  std::cout<<"Godina: "<<year<<std::endl;
+  std::cout<<"Semestar: "<<semester<<std::endl;
   std::cout<<std::endl;
 }
 

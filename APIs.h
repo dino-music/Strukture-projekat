@@ -19,7 +19,8 @@ class studentapi:public API<Student>
     studentapi(std::string s):API(s){}
     void setSubjectAPI(subjectapi *reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi *reff){departmentAPI=reff;}
-    void getAll(){printall("ID, Ime, Prezime, Datum rodjenja, E-mail, spol, JMBG, ID odsjeka");}
+    std::string getDep(unsigned int);
+    void getAll();
     void getOne(unsigned int key);
 };
 
@@ -33,7 +34,8 @@ class teacherapi:public API<Teacher>
     teacherapi(std::string s):API(s){}
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
-    void getAll(){printall("ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Titula, ID odsjeka");}
+    std::string getDep(unsigned int);
+    void getAll();
     void getOne(unsigned int key);
 };
 
