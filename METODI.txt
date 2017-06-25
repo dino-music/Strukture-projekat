@@ -12,7 +12,7 @@ department api
 subject api
     6.dohvatanje predmeta po id-u -DONE
 	7.ispis svih predmeta - DONE 
-	8.dohvati spisak studenata koji slušaju predmeta
+	8.dohvati spisak studenata koji slušaju predmeta - DONE
 	9.spisak profa koji drže predmet 
 	10.obriši predmet
 		ukloni predmet u departmentu
