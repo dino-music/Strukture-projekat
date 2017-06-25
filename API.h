@@ -1,26 +1,71 @@
 //Dino Music
 #pragma once
 #include"linkedlist.h"
+#include <fstream>
+#include <stdexcept>
+#include <string>
+#include <iostream>
 
 template<typename T>
 class API
 {
-  private:
+  protected:
     unsigned int capacity_;
     linkedlist<T> *api_;
+    std::string file_;
 
   public:
     API(unsigned int c):capacity_{c},api_{new linkedlist<T>[capacity_]}{}
     API():API(113u){};
+    API(std::string);
     ~API();
+    void parse(const std::string&);
     void push(unsigned int,const T&);
     typename linkedlist<T>::iterator find(unsigned int);
     bool is_present(unsigned int);
     //void remove(const T&);
     bool remove(unsigned int);
     template<typename F>
-      void for_each(F);
+    void for_each(F);
+    typename linkedlist<T>::iterator end(){return api_[0].end();}
+    void printone(unsigned int,std::string);
+    void printall(std::string);
+    void update(std::string);
 };
+
+//Harun Muderizovic
+template<typename T>
+API<T>::API(std::string fileName):API()
+{
+    std::fstream file(fileName);
+    try
+    {
+        if(!file)
+            throw std::domain_error("\nFile not available!\n\n");
+    }
+    catch(std::exception& x)
+    {
+        std::cout << x.what();
+    }
+    file_=fileName;
+    std::string line;
+    std::getline(file,line);
+
+    while(std::getline(file,line))
+    {
+      try
+      {
+        T temp(line);
+        push(temp.getId(),temp);
+      }
+      catch(std::exception& x)
+      {
+        std::cout << x.what();
+      }
+    }
+  
+    file.close();
+}
 
 
 template<typename T>
@@ -36,7 +81,7 @@ typename linkedlist<T>::iterator API<T>::find(unsigned int key)
   //lambda funkcija za find metod linkane liste koji omogucava da se clanovi pretrazuju samo
   //po ID-u bez potrebe za kreiranje kompletnih objekata tipa student, ili profesor koji bi se 
   //koristili za poredjenje
-  auto lambda=[](const T& a, unsigned int b)->bool{return a.id==b;};
+  auto lambda=[](const T& a, unsigned int b)->bool{return a.getId()==b;};
   return api_[key%capacity_].template find<unsigned int>(key,lambda);
 }
 
@@ -55,7 +100,7 @@ bool API<T>::is_present(unsigned int key)
 template<typename T>
 bool API<T>::remove(unsigned int key)
 {
-  auto lambda=[](const T& a, unsigned int b)->bool{return a.id==b;};
+  auto lambda=[](const T& a, unsigned int b)->bool{return a.getId()==b;};
   return api_[key%capacity_].template remove<unsigned int>(key,lambda);
 }
 
@@ -81,3 +126,44 @@ void API<T>::for_each(F lambda)
       lambda(*it);
   }
 }
+
+template<typename T>
+void API<T>::printone(unsigned int key,std::string obj)
+{
+  auto it=find(key);
+  if(it==end())
+    std::cout<<"Nije pronadjen "<<obj<<" sa kljucem "<<key<<std::endl;
+  else
+    (*it).print_fancy();
+}
+
+template<typename T>
+void API<T>::printall(std::string header)
+{
+  std::cout<<header<<std::endl;
+  std::cout<<std::string(header.size(),'-')<<std::endl;
+  for_each([](const T& a){a.print();});
+  std::cout<<std::endl;
+}
+
+//Harun Muderizovic
+struct exam
+{
+  unsigned int subjectId;
+  unsigned int teacherId;
+  int evaluation;
+  std::string date;
+
+  exam(unsigned int sID, unsigned int tID, int e, const std::string& d) : subjectId(sID),teacherId(tID),evaluation(e),date(d) {}
+  void print() const{std::cout<<subjectId<<" "<<teacherId<<" "<<evaluation<<" "<<date<<" ";}
+};
+//Vedad Mešić
+template <typename T>
+void API<T>::update(std::string header){
+  std::ofstream file;
+ file.open(file_);
+ file<<header<<std::endl;
+  auto lambda=[&](T& b){b.file_output(file);};
+  for_each(lambda);
+}
+

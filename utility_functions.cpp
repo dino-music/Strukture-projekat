@@ -34,16 +34,16 @@ bool isValid_jmbg(std::string jmbg){
 
 
 //Harun Muderizovic
-void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
+void SubjTeach(subjectapi& subj, teacherapi& teach,std::string fileName)
 {
   std::fstream file(fileName);
   std::string line; 
   unsigned int sID, tID;
   char zarez;
-  std::stringstream ss;
-  std::getline(file,line); // prva linija u fajlu
+  std::stringstream ss;  // svaku liniju učitavamo u stringstream i iz njega jedan po jedan podatak
+  std::getline(file,line); // učitavanje prve linije, sa rasporedom kolona
 
-  while(getline(file,line)) // za ostale linije
+  while(getline(file,line)) // obrada ostalih linija
   {
     ss << line;
 
@@ -62,10 +62,42 @@ void SubjTeach(subjectapi& subj, teacherapi& teach, const std::string& fileName)
   
   file.close();
 }
+
+void StudExams(studentapi& stud, subjectapi& subj, std::string fileName)
+{
+  std::fstream file(fileName);
+  std::string line;
+  unsigned int studID, subjID, tID;
+  int eval;
+  char zarez;
+  std::string date;
+  std::stringstream ss; // svaku liniju učitavamo u stringstream i iz njega jedan po jedan podatak
+  std::getline(file,line); // učitavanje prve linije, sa rasporedom kolona
+  
+  while(getline(file,line)) // obrada ostalih linija
+  {
+    ss << line;
+
+    ss >> studID >> zarez >> subjID >> zarez >> tID >> zarez >> eval >> zarez >> date;
+
+    auto itSTUD = stud.find(studID);
+    auto itSUBJ = subj.find(subjID); 
+    // ako objekti postoje
+    if(itSTUD != stud.end() && itSUBJ != subj.end())
+    {
+      (*itSTUD).addExam(exam(subjID,tID,eval,date));
+      (*itSUBJ).addStudent(studID);
+    }  
+  }
+
+  file.close();
+}
+
 //Vedad Mešić
-void depSubRead(subjectapi& a, departmentapi& b, std::string c){
+void depSubRead(subjectapi& a, departmentapi& b, std::string c)
+{
   std::string x;
-  std::fstream file(c+".txt");
+  std::fstream file(c);
   while(!file.is_open()){
     std::cout<<"Pogrešan unos. Unesite ponovo:"<<std::endl;
     std::cin>>c;
@@ -91,5 +123,47 @@ void depSubRead(subjectapi& a, departmentapi& b, std::string c){
   file.close();
 }
 
+//Dino Music
+//Funkcija uspostavlja poveznice glavnih hash tabela. Ujedno povezuje hash tabele koje ce trebati izravan pristup
+//jedna drugoj
+void connect(studentapi& stud,teacherapi& teac,subjectapi& sub,departmentapi& dep)
+{
+  SubjTeach(sub,teac,"subjects-teachers.txt");
+  StudExams(stud,sub,"students-subjects-teachers.txt");
+  depSubRead(sub,dep,"departments-subjects.txt");
 
+  stud.setSubjectAPI(&sub);
+  stud.setDepartmentAPI(&dep);
 
+  teac.setSubjectAPI(&sub);
+  teac.setDepartmentAPI(&dep);
+
+  sub.setDepartmentAPI(&dep);
+  sub.setStudentAPI(&stud);
+  sub.setTeacherAPI(&teac);
+
+  dep.setSubjectAPI(&sub);
+}
+//Vedad Mešić
+void updateStudSubjTeach(studentapi& a)
+{
+  std::ofstream file;
+  file.open("students-subjects-teachers.txt");
+  file<<"studentId | subjectId | teacherId | evaluation | date"<<std::endl;
+  auto lambda=[&](Student& b){b.file_outputSST(file);};
+  a.for_each(lambda);
+}
+void updateSubjTeach(subjectapi& a){
+  std::ofstream file;
+  file.open("subjects-teachers.txt");
+  file<<"studentId | teacherId"<<std::endl;
+  auto lambda=[&](Subject& b){b.file_outputST(file);};
+  a.for_each(lambda);
+}
+void updateDepSub(subjectapi& a){
+  std::ofstream file;
+  file.open("deparments-subjects.txt");
+  file<<"deparmentId | subjectId | studyYear , studySemester"<<std::endl;
+  auto lambda=[&](Subject& b){b.file_outputDS(file);};
+  a.for_each(lambda);
+}
