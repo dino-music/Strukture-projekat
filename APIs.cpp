@@ -90,6 +90,27 @@ void subjectapi::getStudents(unsigned int key)
   std::cout<<std::endl;
 }
 
+void subjectapi::getTeachers(unsigned int key)
+{
+  auto it=find(key);
+  if(it==end())
+  {
+    std::cout<<"Nije pronadjen predmet sa kljucem "<<key<<std::endl;
+    return;
+  }
+
+  std::string temp="ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Titula, Odsjek";
+  std::cout<<temp<<std::endl;
+  std::cout<<std::string(temp.size(),'-')<<std::endl;
+  for(auto const &i:(*it).getTeachers())
+  {
+    auto it=teacherAPI->find(i);
+    (*it).print();
+    std::cout<<teacherAPI->getDep((*it).getDepId())<<std::endl;
+  }
+  std::cout<<std::endl;
+}
+
 
 
 
