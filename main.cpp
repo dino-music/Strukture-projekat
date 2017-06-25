@@ -22,5 +22,6 @@ int main(void)
   studentAPI.getOne(4);
   subjectAPI.getOne(2);
   subjectAPI.getOne(5);
+  subjectAPI.getStudents(1);
   return 0;
 }

@@ -90,6 +90,8 @@ class Subject{
   void file_output(std::ofstream&);
    //Vedad Mešić
   void debug_print()const;
+  std::list<unsigned int>& getStudents(){return students;}
+  std::list<unsigned int>& getTeachers(){return teachers;}
 
 };
 
