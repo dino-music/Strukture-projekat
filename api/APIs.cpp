@@ -220,6 +220,26 @@ void subjectapi::removeSubject(unsigned int id)
   remove(id); 
 }
 
+void subjectapi::connectSubjTeach(unsigned int sID, unsigned int tID)
+{
+  // ispitivanje da li postoje
+  auto ITsubj = find(sID);
+  if(ITsubj == end())
+  {
+    std::cout << "Predmet nije unesen!" << std::endl << std::endl;
+    return;
+  }
+  auto ITteach = (*teacherAPI).find(tID);
+  if(ITteach == (*teacherAPI).end())
+  {
+    std::cout << "Profesor nije unesen!" << std::endl << std::endl;
+    return;
+  }
+
+  (*ITsubj).addTeacher(tID);
+  (*ITteach).addSubject(sID);
+}
+
 
 //Emina Mahmutbegovic
 //dodaje novog profesora na predmet subID
