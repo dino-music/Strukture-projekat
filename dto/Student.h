@@ -54,6 +54,7 @@ class Student{
   void print_fancy(std::string)const;//za uredjenije printanje
   //Harun Muderizovic
   void addExam(const exam& e){exams.push_back(e);}
+  std::list<exam>& getExams() {return exams;}
   //Ina Saltovic
   void file_output(std::ofstream&);
   //Vedad Mešić
