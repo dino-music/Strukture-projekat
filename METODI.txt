@@ -15,7 +15,7 @@ subject api
 	7.ispis svih predmeta - DONE 
 	8.dohvati spisak studenata koji slušaju predmeta - DONE
 	9.spisak profa koji drže predmet - DONE
-	10.obriši predmet
+	10.obriši predmet - DONE
 		ukloni predmet u departmentu
 		ukloni predmet kod profesora 
 		ukloni predmet kod studenta
