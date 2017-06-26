@@ -111,6 +111,42 @@ void subjectapi::getTeachers(unsigned int key)
   std::cout<<std::endl;
 }
 
+//Harun Muderizovic
+void subjectapi::saveSubject(unsigned int id, const std::string& name, unsigned int ects, const std::string& abbre)
+{
+  if(is_present(id))
+    std::cout << "Predmet sa id-om " << id <<" vec postoji." << std::endl;
+  else
+    push(id,Subject(id,name,ects,abbre));
+}
+
+void subjectapi::connectSubjDep(unsigned int subjID, unsigned int depID, departmentapi& depAPI)
+{
+  auto sIT = find(subjID);
+  auto dIT = depAPI.find(depID);
+  //ispitivanje da li predmet i odsjek postoje
+  if(sIT == end())
+  {
+    std::cout << "Predmet sa id-om " << subjID << " ne postoji u bazi" << std::endl;
+    return;
+  }
+  if(dIT == depAPI.end())
+  {
+    std::cout << "Odsjek sa id-om " << depID << " ne postoji u bazi" << std::endl;
+    return;
+  }
+  //ispitivanje da li je predmet povezan sa drugim odsjekom
+  unsigned int depa = (*sIT).getDep();
+  if(depa != 0)
+    std::cout << "Predmet je vec povezan sa departmentom " << depa << std::endl;
+  else // ako nije, povezati ih
+  {
+    (*sIT).setDepartment(depID);
+    (*dIT).addSubject(subjID);
+    std::cout << "Uspjesno povezano!" << std::endl << std::endl;
+  }
+}
+
 //Emina Mahmutbegovic
 //dodavanje novog departmenta
 void departmentapi::saveDep(unsigned int id, const std::string& name){
