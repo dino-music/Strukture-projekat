@@ -178,6 +178,31 @@ void teacherapi::changeDep(unsigned int id, unsigned int depID){
   }
 }
 
+//Ina Saltovic
+void teacherapi::getSub(unsigned int key){
+  auto it = find(key);
+  if(it == end()){
+    std::cout << "Trazeni profesor nije pronadjen" << std::endl;
+    return;
+  }
+
+  std::cout << "Predmet/i profesora " << (*it).getFirstName() << " " << (*it).getLastName() << ": ";
+  std::list<unsigned int> predmeti = (*it).getSubjects();
+  int zarez = 0;
+  for(auto i:predmeti){
+    auto it2 = (*subjectAPI).find(i);
+    if(it2 != (*subjectAPI).end())
+      std::cout << (*it2).getName();
+    else
+      std::cout << "Nema predmeta";
+    if(++zarez != predmeti.size())
+      std::cout << ", ";
+  }
+
+  std::cout << "." << std::endl;
+}
+
+
 void subjectapi::getStudents(unsigned int key)
 {
   auto it=find(key);
