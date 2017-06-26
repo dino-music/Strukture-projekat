@@ -47,6 +47,8 @@ class teacherapi:public API<Teacher>
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId");}
     void changeLastName(unsigned int,const std::string&);//Emina M
     void changeTitle(unsigned int,const std::string&);//Emina M
+    //Harun Muderizovic
+    void removeTeacher(unsigned int);
 };
 
 class subjectapi:public API<Subject>
