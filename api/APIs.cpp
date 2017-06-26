@@ -1,11 +1,32 @@
 //Dino Music
 #include"APIs.h"
 
-std::string studentapi::getDep(unsigned int key)
+std::string studentapi::getDep(unsigned int key)//Emina
 {
   auto it=departmentAPI->find(key);//pronadjemo department sa adekvatnim ID-em
   return (*it).getName();//vracamo ime departmenta
 }
+
+//Emina
+void departmentapi::addSubject(unsigned int depID,unsigned int subID,const std::string& name,unsigned int ects,
+    const std::string& abb,const std::string& year,const std::string& semester){
+  if(is_present(depID)){
+    auto it=find(depID);
+    if(!subjectAPI->is_present(subID))
+    {
+      Subject temp(subID,name,ects,abb);
+      temp.setYear(year);
+      temp.setSemester(semester);
+      temp.setDepartment(depID);
+      subjectAPI->push(subID,temp);
+      (*it).addSubject(subID);
+    }else
+      std::cout<<"Postoji predmet sa id: "<<subID<<std::endl;
+  }else 
+    std::cout<<"Nije pronadjen department sa kljucem: "<<depID<<std::endl;
+}
+
+
 
 void studentapi::getAll()
 {
