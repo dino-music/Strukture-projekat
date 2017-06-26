@@ -33,7 +33,7 @@ profesor
 	16.ispis svih profesora - DONE
 	17.ispis predmeta koje drži
 	18.promjena titule DONE
-	19.dodati predmet profesoru
+	19.dodati predmet profesoru - DONE
 	20.ukloniti predmet profesoru
 		provjeriti prvo da li predmet postoji
 		ovi metodi su slični gore navedenim za subject
