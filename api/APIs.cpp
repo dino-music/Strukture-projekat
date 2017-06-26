@@ -32,7 +32,7 @@ void studentapi::getById(unsigned int key)
   }
 }
 
-//emina mahmutbegovic
+//Ina Saltovic
 void studentapi::changeLastName(unsigned int id,const std::string& newName){
   if(is_present(id)){
     auto it=find(id);
@@ -170,7 +170,7 @@ void teacherapi::getAll()
   std::cout<<std::endl;
 }
 
-//Emina Mahmutbegovic
+//Ina Saltovic
 void teacherapi::changeLastName(unsigned int id,const std::string& newName){
   if(is_present(id)){
     auto it=find(id);
@@ -179,7 +179,7 @@ void teacherapi::changeLastName(unsigned int id,const std::string& newName){
     std::cout<<"Nije pronadjen teacher sa id: "<<id<<std::endl;
 }
 
-//Emina Mahmutbegovic
+//Ina Saltovic
 void teacherapi::changeTitle(unsigned int id,const std::string& newName){
   if(is_present(id)){
     auto it=find(id);
