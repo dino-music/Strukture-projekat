@@ -40,4 +40,6 @@ class Subject{
   std::list<unsigned int>& getTeachers(){return teachers;}
   std::string getYear()const{return year;}
   std::string getSemester()const{return semester;}
+  //Harun Muderizovic
+  const std::string& getName()const{return name;};
 };
