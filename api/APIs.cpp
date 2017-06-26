@@ -40,7 +40,21 @@ void studentapi::changeLastName(unsigned int id,const std::string& newName){
   }else
     std::cout<<"Nije pronadjen student sa id: "<<id<<std::endl;
 }
-
+//Vedad Mešić
+void studentapi::passedExams(unsigned int id){
+  auto it=find(id);
+  if(it==end())
+    std::cout<<"Nije pronadjen student sa id: "<<id<<std::endl;
+  else{
+    for(auto& el : (*it).getExams()){
+      if(el.evaluation>=6){
+        auto it3=subjectAPI->find(el.subjectId);
+        auto it2=subjectAPI->teacherAPI->find(el.teacherId);
+      std::cout<<(*it3).getName()<<" "<<el.evaluation<<" "<<el.date<<" "<<(*it2).getFirstName()<<" "<<(*it2).getLastName()<<std::endl;
+       }
+     }
+  }
+}
 
 
 
