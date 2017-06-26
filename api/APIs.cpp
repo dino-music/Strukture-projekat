@@ -120,26 +120,26 @@ void subjectapi::saveSubject(unsigned int id, const std::string& name, unsigned 
     push(id,Subject(id,name,ects,abbre));
 }
 
-void subjectapi::connectSubjDep(unsigned int subjID, unsigned int depID, departmentapi& depAPI)
+void subjectapi::connectSubjDep(unsigned int subjID, unsigned int depID)
 {
-  auto sIT = find(subjID);
-  auto dIT = depAPI.find(depID);
   //ispitivanje da li predmet i odsjek postoje
+  auto sIT = find(subjID);
+  auto dIT = (*departmentAPI).find(depID);
   if(sIT == end())
   {
     std::cout << "Predmet sa id-om " << subjID << " ne postoji u bazi" << std::endl;
     return;
   }
-  if(dIT == depAPI.end())
+  if(dIT == (*departmentAPI).end())
   {
     std::cout << "Odsjek sa id-om " << depID << " ne postoji u bazi" << std::endl;
     return;
   }
-  //ispitivanje da li je predmet povezan sa drugim odsjekom
+  //provjeravanje da li je predmet na drugom odsjeku
   unsigned int depa = (*sIT).getDep();
   if(depa != 0)
     std::cout << "Predmet je vec povezan sa departmentom " << depa << std::endl;
-  else // ako nije, povezati ih
+  else //ako nije
   {
     (*sIT).setDepartment(depID);
     (*dIT).addSubject(subjID);
@@ -178,9 +178,9 @@ void departmentapi::addSubject(unsigned int depID,unsigned int subID,const std::
 
 
 //Harun Muderizovic
-void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
+void departmentapi::getSubjects(unsigned int id)
 {
-  auto it = find(id); //ispitivanje da li odsjek postoji
+  auto it = find(id); // ispitivanje da li odsjek postoji
   if(it == end())
   {
     std::cout << "Nije pronadjen odsjek sa id-om " << id << std::endl;
@@ -188,20 +188,20 @@ void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
   }
   
   std::cout << "Odsjek: " << (*it).getName() << std::endl << "Predmeti na odsjeku: ";
-  std::list<unsigned int> lista = (*it).getSubjectList(); //dohvata listu id-a predmeta sa odsjeka
+  std::list<unsigned int> lista = (*it).getSubjectList(); // dohvatanje liste id-eva
   int zarez = 0;
-  for(auto s : lista) // za svaki clan liste (id) ispisuje ime predmeta
+  for(auto s : lista) // prolazak kroz listu i ispisivanje predmeta pomocu njihovog id-a
   {
-    auto sIT = subj.find(s);
-    if(sIT != subj.end())
+    auto sIT = (*subjectAPI).find(s);
+    if(sIT != (*subjectAPI).end())
       std::cout << (*sIT).getName();
     else
       std::cout << "Predmet obrisan";
-    if(++zarez != lista.size()) //izbjegavanje zareza poslije zadnjeg clana
+    if(++zarez != lista.size())
       std::cout << ", ";
   }
 
-  std::cout << '.' << std::endl << std::endl;
+  std::cout << '.' << std::endl;
 }
 
 
