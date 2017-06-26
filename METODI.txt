@@ -40,7 +40,7 @@ profesor
 		provjeriti prvo da li predmet postoji
 		ovi metodi su slični gore navedenim za subject
 	21.metod za output u teachers.txt - DONE
-	BONUS: promjena departmenta
+	BONUS: promjena departmenta DONE
 	BONUS: promjena prezimena DONE
 	
 student
