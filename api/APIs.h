@@ -52,6 +52,8 @@ class teacherapi:public API<Teacher>
     void changeDep(unsigned int,unsigned int);//Vedad Mešić
     //Harun Muderizovic
     void removeTeacher(unsigned int);
+    //Ina Saltovic 
+    void getSub(unsigned int);
 };
 
 class subjectapi:public API<Subject>
