@@ -120,7 +120,21 @@ void teacherapi::removeTeacher(unsigned int id)
   
   //uklanjanje iz liste
   remove(id);
-} 
+}
+//Vedad Mešić
+void teacherapi::changeDep(unsigned int id, unsigned int depID){
+  auto it=departmentAPI->find(depID);
+  if(it==departmentAPI->end())
+    std::cout<<"Nije pronadjen department."<<std::endl;
+  else{
+  auto it2=find(id);
+    if(it2==end())
+      std::cout<<"Nije pronadjen profesor."<<std::endl;
+    else{
+      (*it2).setDepartment(depID);
+    }
+  }
+}
 
 void subjectapi::getStudents(unsigned int key)
 {
