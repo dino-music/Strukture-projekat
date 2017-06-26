@@ -61,6 +61,9 @@ class subjectapi:public API<Subject>
     void getStudents(unsigned int);
     void getTeachers(unsigned int);
     void update(){Update("id | name | ects | abbreviation");}
+    //Harun Muderizovic
+    void saveSubject(unsigned int, const std::string&, unsigned int, const std::string&);
+    void connectSubjDep(unsigned int, unsigned int, departmentapi&);
 };
 
 
