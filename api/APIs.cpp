@@ -123,7 +123,7 @@ void departmentapi::saveDep(unsigned int id, const std::string& name){
 //Harun Muderizovic
 void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
 {
-  auto it = find(id);
+  auto it = find(id); //ispitivanje da li odsjek postoji
   if(it == end())
   {
     std::cout << "Nije pronadjen odsjek sa id-om " << id << std::endl;
@@ -131,14 +131,17 @@ void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
   }
   
   std::cout << "Odsjek: " << (*it).getName() << std::endl << "Predmeti na odsjeku: ";
-  for(auto s : (*it).getSubjectList())
+  std::list<unsigned int> lista = (*it).getSubjectList(); //dohvata listu id-a predmeta sa odsjeka
+  int zarez = 0;
+  for(auto s : lista) // za svaki clan liste (id) ispisuje ime predmeta
   {
     auto sIT = subj.find(s);
     if(sIT != subj.end())
       std::cout << (*sIT).getName();
     else
       std::cout << "Predmet obrisan";
-    std::cout << ", ";
+    if(++zarez != lista.size()) //izbjegavanje zareza poslije zadnjeg clana
+      std::cout << ", ";
   }
 
   std::cout << '.' << std::endl;
