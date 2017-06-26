@@ -69,6 +69,7 @@ class subjectapi:public API<Subject>
     //Harun Muderizovic
     void saveSubject(unsigned int, const std::string&, unsigned int, const std::string&);
     void connectSubjDep(unsigned int, unsigned int);
+    void removeSubject(unsigned int);
 };
 
 
