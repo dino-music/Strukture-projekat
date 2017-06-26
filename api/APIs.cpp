@@ -97,6 +97,30 @@ void teacherapi::getById(unsigned int key)
   }
 }
 
+//Harun Muderizovic
+void teacherapi::removeTeacher(unsigned int id)
+{
+  auto it = find(id);
+  if(it == end()) //ako ne postoji nema potrebe brisati
+    return;
+  
+  // uklanjanje profesora na predmetu
+  for(auto s : (*it).getSubjects())
+  {
+    auto ITsubj = (*subjectAPI).find(s);
+    for(auto t : (*ITsubj).getTeachers())
+    {
+      if(t==id)
+      {
+        (*ITsubj).getTeachers().remove(t);
+        break;
+      }
+    }
+  }
+  
+  //uklanjanje iz liste
+  remove(id);
+} 
 
 void subjectapi::getStudents(unsigned int key)
 {
