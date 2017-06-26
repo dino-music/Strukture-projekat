@@ -15,13 +15,13 @@ struct exam
   exam(unsigned int sID, unsigned int tID, int e, const std::string& d) : subjectId(sID),teacherId(tID),evaluation(e),date(d) {}
   void print() const{std::cout<<subjectId<<" "<<teacherId<<" "<<evaluation<<" "<<date<<" ";}
   bool operator==(const exam& drugi) { return ((subjectId==drugi.subjectId) && (teacherId==drugi.teacherId) && (evaluation==drugi.evaluation) && (date == drugi.date));}
-	void operator=(const exam& drugi)
-	{
-		subjectId = drugi.subjectId; 
-		teacherId = drugi.teacherId; 
-		evaluation = drugi.evaluation; 
-		date = drugi.date;
-	}
+  void operator=(const exam& drugi)	
+  {
+  	subjectId = drugi.subjectId; 
+	teacherId = drugi.teacherId; 
+	evaluation = drugi.evaluation; 
+	date = drugi.date;
+  }
 };
 
 //Emina Mahmutbegovic
