@@ -23,7 +23,7 @@ class Department{
     void file_output(std::ofstream&);
    //Vedad Mešić
   void debug_print()const;
-  //Harun Muderizovic
-	std::list<unsigned int>& getSubjectList() {return subjects;};
+    //Harun Muderizovic
+    std::list<unsigned int>& getSubjectList() {return subjects;};
 };
 
