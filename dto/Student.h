@@ -41,6 +41,7 @@ class Student{
   const std::string& getJmbg()const{return jmbg;}
   char getGender()const{return gender;}
   unsigned int getDepId()const{return depId;}
+  void setLastName(const std::string& n){lastName=n;}
   void print()const;//za printanje u jednoj liniji
   void print_fancy(std::string)const;//za uredjenije printanje
   //Harun Muderizovic
