@@ -146,6 +146,24 @@ void subjectapi::connectSubjDep(unsigned int subjID, unsigned int depID)
     std::cout << "Uspjesno povezano!" << std::endl << std::endl;
   }
 }
+//Emina Mahmutbegovic
+//dodaje novog profesora na predmet subID
+void subjectapi::addTeacher(unsigned int subID,unsigned int tID,const std::string& name,const std::string& last,
+    const std::string& bdate, const std::string& mail,char gender,const std::string& jmbg,unsigned int depID,const std::string& title){
+  if(is_present(subID)){
+    if(!teacherAPI->is_present(tID)){
+      Teacher temp(tID,name,last,bdate,mail,gender,jmbg,depID,title);
+      temp.addSubject(subID);
+      teacherAPI->push(tID,temp);
+      auto it=find(subID);
+      (*it).addTeacher(tID);
+    }else
+      std::cout<<"Vec postoji teacher sa id: "<<tID<<std::endl;
+  }else
+    std::cout<<"Ne postoji predmet sa id: "<<subID<<std::endl;
+}
+
+
 
 //Emina Mahmutbegovic
 //dodavanje novog departmenta
