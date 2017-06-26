@@ -30,6 +30,7 @@ subject api
 	
 profesor
 	15.dohvatanje jednog profesora po id-u - DONE
+	uklanjenje profesora
 	16.ispis svih profesora - DONE
 	17.ispis predmeta koje drži
 	18.promjena titule DONE
