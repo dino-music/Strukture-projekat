@@ -175,6 +175,52 @@ void subjectapi::connectSubjDep(unsigned int subjID, unsigned int depID)
     std::cout << "Uspjesno povezano!" << std::endl << std::endl;
   }
 }
+
+void subjectapi::removeSubject(unsigned int id)
+{
+  //prvo ispitujemo da li predmet uopste postoji
+  auto ITsubj = find(id);
+  if(ITsubj == end())
+  {
+    std::cout << "Predmet sa id-om " << id << " ne postoji u bazi" << std::endl;
+    return;
+  }
+
+  //uklanjamo ga sa odsjeka
+  unsigned int depID = (*ITsubj).getDep();
+  if(depID != 0) // ako je povezan sa odsjekom
+  {
+    auto ITdep = (*departmentAPI).find(depID);
+    (*ITdep).getSubjectList().remove(id);
+  }
+
+  //uklanjamo ga kod profesora
+  for(auto t : (*ITsubj).getTeachers())
+  {
+    auto ITteach = (*teacherAPI).find(t);
+    (*ITteach).getSubjects().remove(id);
+  }
+
+  //uklanjamo ga kod studenata
+  for(auto s : (*ITsubj).getStudents())
+  {
+    auto ITstud = (*studentAPI).find(s);
+
+    for(auto e : (*ITstud).getExams())
+    {
+      if(e.subjectId == id && e.evaluation < 6)
+      {
+        (*ITstud).getExams().remove(e);
+        break;
+      }
+    }
+  }
+
+  //na kraju uklanjamo predmet iz liste predmeta
+  remove(id); 
+}
+
+
 //Emina Mahmutbegovic
 //dodaje novog profesora na predmet subID
 void subjectapi::addTeacher(unsigned int subID,unsigned int tID,const std::string& name,const std::string& last,
