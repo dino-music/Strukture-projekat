@@ -6,7 +6,8 @@ class Teacher: public Student{
   std::string title;
   std::list<unsigned int> subjects;
   public:
-  Teacher(const std::string&);    
+  Teacher(const std::string&);   
+  void setTitle(const std::string& t){title=t;}
   //Harun Muderizovic
   void addSubject(unsigned int id){subjects.push_back(id);}
   //Ina Saltovic
