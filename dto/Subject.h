@@ -42,4 +42,5 @@ class Subject{
   std::string getSemester()const{return semester;}
   //Harun Muderizovic
   const std::string& getName()const{return name;};
+  unsigned int getDep() {return department;}
 };
