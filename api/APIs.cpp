@@ -304,7 +304,7 @@ void departmentapi::removeDep(unsigned int ID){
   if(it==end())
     std::cout<<"Nema tog ID-a"<<std::endl;
   else{
-    for(auto& el : (*it).getSubjects()){
+    for(auto& el : (*it).getSubjectList()){
       auto it2=subjectAPI->find(el);
       if(it2!=subjectAPI->end()){
         for(auto& item : (*it2).getTeachers()){
