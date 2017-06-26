@@ -111,6 +111,14 @@ void subjectapi::getTeachers(unsigned int key)
   std::cout<<std::endl;
 }
 
+//Emina Mahmutbegovic
+void departmentapi::saveDep(unsigned int id, const std::string& name){
+  if(is_present(id))
+    std::cout<<"Department sa kljucem "<<id<<" vec postoji."<<std::endl;
+  else
+  push(id,Department(id,name));
+
+}
 
 
 
