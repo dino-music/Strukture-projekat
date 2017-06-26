@@ -66,6 +66,8 @@ class subjectapi:public API<Subject>
     void getStudents(unsigned int);
     void getTeachers(unsigned int);
     void update(){Update("id | name | ects | abbreviation");}
+    void addTeacher(unsigned int,unsigned int,const std::string&,const std::string&,const std::string&,
+        const std::string&,char,const std::string&,unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
     void saveSubject(unsigned int, const std::string&, unsigned int, const std::string&);
     void connectSubjDep(unsigned int, unsigned int);
@@ -87,8 +89,6 @@ class departmentapi:public API<Department>
     void addSubject(unsigned int,unsigned int,const std::string&,unsigned int,const std::string&,const std::string&,
     const std::string&); //Emina Mahmutbegovic
     void saveDep(unsigned int,const std::string&);//Emina Mahmutbegovic
-    void addTeacher(unsigned int,unsigned int,const std::string&,const std::string&,const std::string&,
-        const std::string&,char,const std::string&,unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
     void getSubjects(unsigned int);
 };
