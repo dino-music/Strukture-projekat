@@ -50,7 +50,7 @@ student
 	25.Ispis ispita koje nije položio - DONE
 	26.Dodavanje studenta DONE
 		Provjeriti da li postoji department koji je unešen sa studentom, ako ne postoji, ponuditi korisniku mogućnost da prvo unese department
-	27.Uklanjanje studenta
+	27.Uklanjanje studenta - DONE
 		Potrebno je ukloniti ga iz liste predmeta koje sluša, prije nego što se ukloni iz liste studenata
 	28.metod za output u departments.txt - DONE
 	29.Promjena prezimena DONE
