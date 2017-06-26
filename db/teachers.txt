@@ -1,0 +1,3 @@
+ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId
+1, test, test, 1979-12-05, test.test@fet.ba, M, 2204997180021, dr.sc (van. prof.), 1
+2, test2, test2, 1962-08-24, test2.test2@fet.ba, F, 2204997180021, dr.sc (red. prof.), 2
