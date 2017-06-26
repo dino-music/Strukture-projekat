@@ -8,7 +8,7 @@ department api
 	5.metod za output u departments.txt - DONE
 	Metod za dodavanje subjecta departmentu.
 	BONUS promjena imena departmenta-po istom principu ko ovo iznad
-	BONUS ispis departmenta sa ispisom predmeta u tom departmentu
+	BONUS ispis departmenta sa ispisom predmeta u tom departmentu-DONE
 	
 subject api
     6.dohvatanje predmeta po id-u -DONE
