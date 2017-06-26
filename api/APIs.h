@@ -75,6 +75,8 @@ class departmentapi:public API<Department>
     void getAll(){printall("ID, Ime");}
     void getById(unsigned int key){printone(key,"odsjek");}
     void update(){Update("id | name");}
+    void addSubject(unsigned int,unsigned int,const std::string&,unsigned int,const std::string&,const std::string&,
+    const std::string&); //Emina Mahmutbegovic
     void saveDep(unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
     void getSubjects(unsigned int, subjectapi&);
