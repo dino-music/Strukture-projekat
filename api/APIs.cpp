@@ -144,7 +144,7 @@ void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
       std::cout << ", ";
   }
 
-  std::cout << '.' << std::endl;
+  std::cout << '.' << std::endl << std::endl;
 }
 
 
