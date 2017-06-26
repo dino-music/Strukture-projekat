@@ -29,6 +29,7 @@ class studentapi:public API<Student>
     void changeLastName(unsigned int,const std::string&);//Emina M
     void saveStudent(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
         char,const std::string&,unsigned int);//Emina M
+    void passedExams(unsigned int); //Vedad Mesic
 };
 
 class teacherapi:public API<Teacher>
