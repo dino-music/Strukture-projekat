@@ -84,9 +84,26 @@ void studentapi::getSubjects(unsigned int id)
   std::cout << std::endl;
 }
 
+//Harun Muderizovic
+void studentapi::Remove(unsigned int id)
+{
+  auto it = find(id);
+  if(it == end())
+  {
+    std::cout << "Student nije unesen!" << std::endl << std::endl;
+    return;
+  }
 
+  //uklanjanje studenta sa predmeta
+  for(auto& s : (*it).getExams())
+  {
+    auto ITsubj = (*subjectAPI).find(s.subjectId);
+    (*ITsubj).getStudents().remove(id);
+  }
 
-
+  //uklanjanje iz liste studenata
+  remove(id);
+}
 
 
 std::string teacherapi::getDep(unsigned int key)
