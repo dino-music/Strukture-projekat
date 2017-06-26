@@ -120,5 +120,29 @@ void departmentapi::saveDep(unsigned int id, const std::string& name){
 
 }
 
+//Harun Muderizovic
+void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
+{
+  auto it = find(id);
+  if(it == end())
+  {
+    std::cout << "Nije pronadjen odsjek sa id-om " << id << std::endl;
+    return;
+  }
+  
+  std::cout << "Odsjek: " << (*it).getName() << std::endl << "Predmeti na odsjeku: ";
+  for(auto s : (*it).getSubjectList())
+  {
+    auto sIT = subj.find(s);
+    if(sIT != subj.end())
+      std::cout << (*sIT).getName();
+    else
+      std::cout << "Predmet obrisan";
+    std::cout << ", ";
+  }
+
+  std::cout << '.' << std::endl;
+}
+
 
 
