@@ -60,5 +60,6 @@ class Student{
   //Vedad Mešić
   void debug_print()const;
   void file_outputSST(std::ofstream&);
+  void setDepartment(unsigned int dep){depId=dep;}
 };
 
