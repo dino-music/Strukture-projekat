@@ -19,4 +19,6 @@ class Teacher: public Student{
   void file_output(std::ofstream&);
    //Vedad Mešić
   void debug_print()const;
+  //Harun Muderizovic
+	std::list<unsigned int>& getSubjects() {return subjects;}
 };
