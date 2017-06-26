@@ -7,27 +7,6 @@ std::string studentapi::getDep(unsigned int key)//Emina
   return (*it).getName();//vracamo ime departmenta
 }
 
-//Emina
-void departmentapi::addSubject(unsigned int depID,unsigned int subID,const std::string& name,unsigned int ects,
-    const std::string& abb,const std::string& year,const std::string& semester){
-  if(is_present(depID)){
-    auto it=find(depID);
-    if(!subjectAPI->is_present(subID))
-    {
-      Subject temp(subID,name,ects,abb);
-      temp.setYear(year);
-      temp.setSemester(semester);
-      temp.setDepartment(depID);
-      subjectAPI->push(subID,temp);
-      (*it).addSubject(subID);
-    }else
-      std::cout<<"Postoji predmet sa id: "<<subID<<std::endl;
-  }else 
-    std::cout<<"Nije pronadjen department sa kljucem: "<<depID<<std::endl;
-}
-
-
-
 void studentapi::getAll()
 {
   std::string header="ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Odsjek";
@@ -133,6 +112,7 @@ void subjectapi::getTeachers(unsigned int key)
 }
 
 //Emina Mahmutbegovic
+//dodavanje novog departmenta
 void departmentapi::saveDep(unsigned int id, const std::string& name){
   if(is_present(id))
     std::cout<<"Department sa kljucem "<<id<<" vec postoji."<<std::endl;
@@ -140,6 +120,26 @@ void departmentapi::saveDep(unsigned int id, const std::string& name){
   push(id,Department(id,name));
 
 }
+//Emina
+void departmentapi::addSubject(unsigned int depID,unsigned int subID,const std::string& name,unsigned int ects,
+    const std::string& abb,const std::string& year,const std::string& semester){
+  if(is_present(depID)){
+    auto it=find(depID);
+    if(!subjectAPI->is_present(subID))
+    {
+      Subject temp(subID,name,ects,abb);
+      temp.setYear(year);
+      temp.setSemester(semester);
+      temp.setDepartment(depID);
+      subjectAPI->push(subID,temp);
+      (*it).addSubject(subID);
+    }else
+      std::cout<<"Postoji predmet sa id: "<<subID<<std::endl;
+  }else 
+    std::cout<<"Nije pronadjen department sa kljucem: "<<depID<<std::endl;
+}
+
+
 
 //Harun Muderizovic
 void departmentapi::getSubjects(unsigned int id, subjectapi& subj)
