@@ -26,7 +26,8 @@ class studentapi:public API<Student>
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | departmentId");}
-    void changeLastName(unsigned int,const std::string&);//Emina M
+    //Ina Saltovic
+    void changeLastName(unsigned int,const std::string&);
     void save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
         char,const std::string&,unsigned int);//Emina M
     void passedExams(unsigned int); //Vedad Mesic
@@ -48,8 +49,10 @@ class teacherapi:public API<Teacher>
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId");}
-    void changeLastName(unsigned int,const std::string&);//Emina M
-    void changeTitle(unsigned int,const std::string&);//Emina M
+    //Ina Saltovic
+    void changeLastName(unsigned int,const std::string&);
+    //Ina Saltovic
+    void changeTitle(unsigned int,const std::string&);
     void changeDep(unsigned int,unsigned int);//Vedad Mešić
     void save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
         char,const std::string&,unsigned int,const std::string&);//Emina M
