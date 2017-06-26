@@ -18,3 +18,4 @@ void updateSubjTeach(subjectapi&);
 void updateStudSubjTeach(studentapi&);
 //Dino Music
 void connect(studentapi&,teacherapi&,subjectapi&,departmentapi&);
+void update(studentapi&, teacherapi&, subjectapi&, departmentapi&);

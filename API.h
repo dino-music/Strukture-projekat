@@ -17,9 +17,8 @@ class API
   public:
     API(unsigned int c):capacity_{c},api_{new linkedlist<T>[capacity_]}{}
     API():API(113u){};
-    API(std::string);
     ~API();
-    void parse(const std::string&);
+    void open(std::string);
     void push(unsigned int,const T&);
     typename linkedlist<T>::iterator find(unsigned int);
     bool is_present(unsigned int);
@@ -30,12 +29,12 @@ class API
     typename linkedlist<T>::iterator end(){return api_[0].end();}
     void printone(unsigned int,std::string);
     void printall(std::string);
-    void update(std::string);
+    void Update(std::string);
 };
 
 //Harun Muderizovic
 template<typename T>
-API<T>::API(std::string fileName):API()
+void API<T>::open(std::string fileName)
 {
     std::fstream file(fileName);
     try
@@ -146,20 +145,9 @@ void API<T>::printall(std::string header)
   std::cout<<std::endl;
 }
 
-//Harun Muderizovic
-struct exam
-{
-  unsigned int subjectId;
-  unsigned int teacherId;
-  int evaluation;
-  std::string date;
-
-  exam(unsigned int sID, unsigned int tID, int e, const std::string& d) : subjectId(sID),teacherId(tID),evaluation(e),date(d) {}
-  void print() const{std::cout<<subjectId<<" "<<teacherId<<" "<<evaluation<<" "<<date<<" ";}
-};
 //Vedad Mešić
 template <typename T>
-void API<T>::update(std::string header){
+void API<T>::Update(std::string header){
   std::ofstream file;
  file.open(file_);
  file<<header<<std::endl;

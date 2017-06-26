@@ -1,7 +1,10 @@
 //Dino Music
 #pragma once
 #include "API.h"
-#include "objekti.h"
+#include "Student.h"
+#include "Teacher.h"
+#include "Subject.h"
+#include "Department.h"
 
 class studentapi;
 class teacherapi;
@@ -16,13 +19,18 @@ class studentapi:public API<Student>
     departmentapi* departmentAPI;
 
   public:
-    studentapi(std::string s):API(s){}
+    studentapi():API(){}
     void setSubjectAPI(subjectapi *reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi *reff){departmentAPI=reff;}
     std::string getDep(unsigned int);
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | departmentId");}
+    void changeLastName(unsigned int,const std::string&);//Emina M
+    void save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
+        char,const std::string&,unsigned int);//Emina M
+    void passedExams(unsigned int); //Vedad Mesic
+    void getSubjects(unsigned int); //Harun Muderizovic
 };
 
 class teacherapi:public API<Teacher>
@@ -32,32 +40,47 @@ class teacherapi:public API<Teacher>
     departmentapi* departmentAPI;
 
   public:
-    teacherapi(std::string s):API(s){}
+    teacherapi():API(){}
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     std::string getDep(unsigned int);
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId");}
+    void changeLastName(unsigned int,const std::string&);//Emina M
+    void changeTitle(unsigned int,const std::string&);//Emina M
+    void changeDep(unsigned int,unsigned int);//Vedad Mešić
+    void save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
+        char,const std::string&,unsigned int,const std::string&);//Emina M
+    //Harun Muderizovic
+    void remove(unsigned int);
+    //Ina Saltovic 
+    void getSub(unsigned int);
 };
 
 class subjectapi:public API<Subject>
 {
   private:
+  public:
     departmentapi* departmentAPI;
     studentapi* studentAPI;
     teacherapi* teacherAPI;
-  
-  public:
-    subjectapi(std::string s):API(s){}
+    subjectapi():API(){}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     void setStudentAPI(studentapi* reff){studentAPI=reff;}
     void setTeacherAPI(teacherapi* reff){teacherAPI=reff;}
-    void getAll(){printall("ID, Ime, Godina, Semestar, ECTS krediti, Skracenica");}
+    void getAll(){printall("ID, Ime, ECTS krediti, Skracenica, Godina, Semestar");}
     void getById(unsigned int key){printone(key,"predmet");}
     void getStudents(unsigned int);
     void getTeachers(unsigned int);
     void update(){Update("id | name | ects | abbreviation");}
+    void addTeacher(unsigned int,unsigned int,const std::string&,const std::string&,const std::string&,
+        const std::string&,char,const std::string&,unsigned int,const std::string&);//Emina Mahmutbegovic
+    //Harun Muderizovic
+    void save(unsigned int, const std::string&, unsigned int, const std::string&);
+    void connectSubjDep(unsigned int, unsigned int);
+    void remove(unsigned int);
+    void connectSubjTeach(unsigned int, unsigned int);
 };
 
 
@@ -67,9 +90,16 @@ class departmentapi:public API<Department>
     subjectapi* subjectAPI;
 
   public:
-    departmentapi(std::string s):API(s){}
+    departmentapi():API(){}
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
     void getAll(){printall("ID, Ime");}
     void getById(unsigned int key){printone(key,"odsjek");}
     void update(){Update("id | name");}
+    void addSubject(unsigned int,unsigned int,const std::string&,unsigned int,const std::string&,const std::string&,
+    const std::string&); //Emina Mahmutbegovic
+    void save(unsigned int,const std::string&);//Emina Mahmutbegovic
+    //Harun Muderizovic
+    void getSubjects(unsigned int);
+    //Vedad Mešić
+    void removeDep(unsigned int);
 };

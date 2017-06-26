@@ -40,15 +40,13 @@ void SubjTeach(subjectapi& subj, teacherapi& teach,std::string fileName)
   std::string line; 
   unsigned int sID, tID;
   char zarez;
-  std::stringstream ss;  // svaku liniju učitavamo u stringstream i iz njega jedan po jedan podatak
   std::getline(file,line); // učitavanje prve linije, sa rasporedom kolona
 
   while(getline(file,line)) // obrada ostalih linija
   {
-    ss << line;
+    std::stringstream ss(line);
 
     ss >> sID >> zarez >> tID;
-    
     auto itSUB = subj.find(sID);
     auto itTEA = teach.find(tID);
     // ako objekti postoje
@@ -71,14 +69,15 @@ void StudExams(studentapi& stud, subjectapi& subj, std::string fileName)
   int eval;
   char zarez;
   std::string date;
-  std::stringstream ss; // svaku liniju učitavamo u stringstream i iz njega jedan po jedan podatak
   std::getline(file,line); // učitavanje prve linije, sa rasporedom kolona
   
   while(getline(file,line)) // obrada ostalih linija
   {
-    ss << line;
-
-    ss >> studID >> zarez >> subjID >> zarez >> tID >> zarez >> eval >> zarez >> date;
+    std::stringstream ss(line);
+    
+    ss>>studID>>zarez>>subjID>>zarez>>tID>>zarez>>eval>>zarez;
+    std::getline(ss,line,' ');
+    std::getline(ss,date,'\r');
 
     auto itSTUD = stud.find(studID);
     auto itSUBJ = subj.find(subjID); 
@@ -104,13 +103,12 @@ void depSubRead(subjectapi& a, departmentapi& b, std::string c)
   }
   getline(file,x);
   while(getline(file,x)){
-    std::stringstream in;
+    std::stringstream in(x);
     std::string dep,sub,year,sem;
-    in<<x;
     in>>dep;
     in>>sub;
     in>>year;
-    in>>sem;
+    getline(in,sem,'\r');
     unsigned int var=std::stoi(sub);
     year=year.substr(0,year.size()-1);
     auto it=a.find(var);
@@ -128,9 +126,14 @@ void depSubRead(subjectapi& a, departmentapi& b, std::string c)
 //jedna drugoj
 void connect(studentapi& stud,teacherapi& teac,subjectapi& sub,departmentapi& dep)
 {
-  SubjTeach(sub,teac,"subjects-teachers.txt");
-  StudExams(stud,sub,"students-subjects-teachers.txt");
-  depSubRead(sub,dep,"departments-subjects.txt");
+  stud.open("../db/students.txt");
+  teac.open("../db/teachers.txt");
+  sub.open("../db/subjects.txt");
+  dep.open("../db/departments.txt");
+
+  SubjTeach(sub,teac,"../db/subjects-teachers.txt");
+  StudExams(stud,sub,"../db/students-subjects-teachers.txt");
+  depSubRead(sub,dep,"../db/departments-subjects.txt");
 
   stud.setSubjectAPI(&sub);
   stud.setDepartmentAPI(&dep);
@@ -148,22 +151,35 @@ void connect(studentapi& stud,teacherapi& teac,subjectapi& sub,departmentapi& de
 void updateStudSubjTeach(studentapi& a)
 {
   std::ofstream file;
-  file.open("students-subjects-teachers.txt");
+  file.open("../db/students-subjects-teachers.txt");
   file<<"studentId | subjectId | teacherId | evaluation | date"<<std::endl;
   auto lambda=[&](Student& b){b.file_outputSST(file);};
   a.for_each(lambda);
 }
 void updateSubjTeach(subjectapi& a){
   std::ofstream file;
-  file.open("subjects-teachers.txt");
-  file<<"studentId | teacherId"<<std::endl;
+  file.open("../db/subjects-teachers.txt");
+  file<<"subjectId | teacherId"<<std::endl;
   auto lambda=[&](Subject& b){b.file_outputST(file);};
   a.for_each(lambda);
 }
 void updateDepSub(subjectapi& a){
   std::ofstream file;
-  file.open("deparments-subjects.txt");
+  file.open("../db/deparments-subjects.txt");
   file<<"deparmentId | subjectId | studyYear , studySemester"<<std::endl;
   auto lambda=[&](Subject& b){b.file_outputDS(file);};
   a.for_each(lambda);
+}
+
+//Dino Music
+void update(studentapi &stud, teacherapi &teac, subjectapi &sub, departmentapi &dep)
+{
+  stud.update();
+  teac.update();
+  sub.update();
+  dep.update();
+
+  updateDepSub(sub);
+  updateSubjTeach(sub);
+  updateStudSubjTeach(stud);
 }
