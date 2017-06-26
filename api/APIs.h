@@ -30,6 +30,7 @@ class studentapi:public API<Student>
     void saveStudent(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
         char,const std::string&,unsigned int);//Emina M
     void passedExams(unsigned int); //Vedad Mesic
+    void getSubjects(unsigned int); //Harun Muderizovic
 };
 
 class teacherapi:public API<Teacher>
