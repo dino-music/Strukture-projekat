@@ -201,7 +201,7 @@ void departmentapi::getSubjects(unsigned int id)
       std::cout << ", ";
   }
 
-  std::cout << '.' << std::endl;
+  std::cout << '.' << std::endl << std::endl;
 }
 
 
