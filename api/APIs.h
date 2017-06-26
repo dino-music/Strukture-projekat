@@ -27,7 +27,7 @@ class studentapi:public API<Student>
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | departmentId");}
     void changeLastName(unsigned int,const std::string&);//Emina M
-    void saveStudent(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
+    void Save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
         char,const std::string&,unsigned int);//Emina M
     void passedExams(unsigned int); //Vedad Mesic
     void getSubjects(unsigned int); //Harun Muderizovic
