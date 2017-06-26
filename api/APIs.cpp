@@ -298,6 +298,7 @@ void departmentapi::getSubjects(unsigned int id)
 }
 
 //Vedad Mešić
+//metod za brisanje departmenta, gdje prolazi kroz subjecte i trazi profesore i studente koji su na tom departmentu da ih izbrise
 void departmentapi::removeDep(unsigned int ID){
   auto it=find(ID);
   if(it==end())
