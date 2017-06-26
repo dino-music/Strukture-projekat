@@ -1,7 +1,7 @@
 department api
     1.dohvatanje pojedinačnog departmenta po id-u - DONE
 	2.printanje svih departmenta - DONE
-	3.metod za dodavanje departmenta
+	3.metod za dodavanje departmenta - DONE
 	4.metod koji uklanja department
 		prođi kroz subjecte tog departmenta
 		prolazeć kroz subjecte, prođi kroz profesore i studente koji drže taj department i otkloni ih, nakon čega ćeš otkloniti i subjecte departmenta, te na kraju i department
