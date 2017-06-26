@@ -1,6 +1,6 @@
 //Dino Music
 #include"APIs.h"
-
+#include "utility_functions.h"
 std::string studentapi::getDep(unsigned int key)//Emina
 {
   auto it=departmentAPI->find(key);//pronadjemo department sa adekvatnim ID-em
@@ -32,13 +32,34 @@ void studentapi::getById(unsigned int key)
   }
 }
 
-//ina saltovic
+//emina mahmutbegovic
 void studentapi::changeLastName(unsigned int id,const std::string& newName){
   if(is_present(id)){
     auto it=find(id);
     (*it).setLastName(newName);
   }else
     std::cout<<"Nije pronadjen student sa id: "<<id<<std::endl;
+}
+//Vedad Mesic
+void studentapi::save(unsigned int id,const std::string& firstName,const std::string& lastName,const std::string& birthDate,const std::string& email,char gender,const std::string& jmbg,unsigned int depId){
+  if(isValid_mail(email) && isValid_jmbg(jmbg)){
+  auto it = departmentAPI->find(depId);
+  if(it==departmentAPI->end()){
+    std::cout<<"Nije pronadjen department, da li zelite napraviti department sa ID="<<depId<<"?"<<std::endl;
+    std::cout<<"Unesite naziv ako zelite ili ostavite prazno da se ne napravi."<<std::endl;
+    std::string naziv;
+    std::getline(std::cin,naziv);
+    if(naziv.size()!=0){
+      departmentAPI->save(depId,naziv);
+      Student temp2(id,firstName,lastName,birthDate,email,gender,jmbg,depId);
+      push(id,temp2);
+    }
+  }
+  else{ 
+      Student temp2(id,firstName,lastName,birthDate,email,gender,jmbg,depId);
+      push(id,temp2);
+  }
+}
 }
 //Vedad Mešić
 void studentapi::passedExams(unsigned int id){
@@ -106,6 +127,30 @@ void studentapi::Remove(unsigned int id)
 }
 
 
+
+
+//Vedad Mesic
+void teacherapi::save(unsigned int id,const std::string& firstName,const std::string& lastName,const std::string& birthDate,const std::string& email,char gender,const std::string& jmbg,unsigned int depId,const std::string& title){
+  if(isValid_mail(email) && isValid_jmbg(jmbg)){
+  auto it = departmentAPI->find(depId);
+  if(it==departmentAPI->end()){
+    std::cout<<"Nije pronadjen department, da li zelite napraviti department sa ID="<<depId<<"?"<<std::endl;
+    std::cout<<"Unesite naziv ako zelite ili ostavite prazno da se ne napravi."<<std::endl;
+    std::string naziv;
+    std::getline(std::cin,naziv);
+    if(naziv.size()!=0){
+      departmentAPI->save(depId,naziv);
+      Teacher temp2(id,firstName,lastName,birthDate,email,gender,jmbg,depId,title);
+      push(id,temp2);
+    }
+  }
+  else{ 
+      Teacher temp2(id,firstName,lastName,birthDate,email,gender,jmbg,depId,title);
+      push(id,temp2);
+  }
+}
+}
+
 std::string teacherapi::getDep(unsigned int key)
 {
   auto it=departmentAPI->find(key);//pronadjemo department sa adekvatnim ID-em
@@ -125,7 +170,7 @@ void teacherapi::getAll()
   std::cout<<std::endl;
 }
 
-//ina saltovic
+//Emina Mahmutbegovic
 void teacherapi::changeLastName(unsigned int id,const std::string& newName){
   if(is_present(id)){
     auto it=find(id);
@@ -134,7 +179,7 @@ void teacherapi::changeLastName(unsigned int id,const std::string& newName){
     std::cout<<"Nije pronadjen teacher sa id: "<<id<<std::endl;
 }
 
-//ina saltovic
+//Emina Mahmutbegovic
 void teacherapi::changeTitle(unsigned int id,const std::string& newName){
   if(is_present(id)){
     auto it=find(id);
@@ -157,7 +202,7 @@ void teacherapi::getById(unsigned int key)
 }
 
 //Harun Muderizovic
-void teacherapi::removeTeacher(unsigned int id)
+void teacherapi::Remove(unsigned int id)
 {
   auto it = find(id);
   if(it == end()) //ako ne postoji nema potrebe brisati
@@ -263,7 +308,7 @@ void subjectapi::getTeachers(unsigned int key)
 }
 
 //Harun Muderizovic
-void subjectapi::saveSubject(unsigned int id, const std::string& name, unsigned int ects, const std::string& abbre)
+void subjectapi::save(unsigned int id, const std::string& name, unsigned int ects, const std::string& abbre)
 {
   if(is_present(id))
     std::cout << "Predmet sa id-om " << id <<" vec postoji." << std::endl;
@@ -298,7 +343,7 @@ void subjectapi::connectSubjDep(unsigned int subjID, unsigned int depID)
   }
 }
 
-void subjectapi::removeSubject(unsigned int id)
+void subjectapi::Remove(unsigned int id)
 {
   //prvo ispitujemo da li predmet uopste postoji
   auto ITsubj = find(id);
@@ -384,7 +429,7 @@ void subjectapi::addTeacher(unsigned int subID,unsigned int tID,const std::strin
 
 //Emina Mahmutbegovic
 //dodavanje novog departmenta
-void departmentapi::saveDep(unsigned int id, const std::string& name){
+void departmentapi::save(unsigned int id, const std::string& name){
   if(is_present(id))
     std::cout<<"Department sa kljucem "<<id<<" vec postoji."<<std::endl;
   else
@@ -441,7 +486,7 @@ void departmentapi::getSubjects(unsigned int id)
 
 //Vedad Mešić
 //metod za brisanje departmenta, gdje prolazi kroz subjecte i trazi profesore i studente koji su na tom departmentu da ih izbrise
-void departmentapi::removeDep(unsigned int ID){
+void departmentapi::Remove(unsigned int ID){
   auto it=find(ID);
   if(it==end())
     std::cout<<"Nema tog ID-a"<<std::endl;

@@ -26,9 +26,9 @@ class studentapi:public API<Student>
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | departmentId");}
-    void changeLastName(unsigned int,const std::string&);//ina Saltovic
-    void Save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
-        char,const std::string&,unsigned int);//Emina Mahmutbegovic
+    void changeLastName(unsigned int,const std::string&);//Emina M
+    void save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
+        char,const std::string&,unsigned int);//Emina M
     void passedExams(unsigned int); //Vedad Mesic
     void getSubjects(unsigned int); //Harun Muderizovic
     void Remove(unsigned int); //Harun Muderizovic
@@ -48,11 +48,13 @@ class teacherapi:public API<Teacher>
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId");}
-    void changeLastName(unsigned int,const std::string&);//Ina Saltovic
-    void changeTitle(unsigned int,const std::string&);//Ina saltovic
+    void changeLastName(unsigned int,const std::string&);//Emina M
+    void changeTitle(unsigned int,const std::string&);//Emina M
     void changeDep(unsigned int,unsigned int);//Vedad Mešić
+    void save(unsigned int,const std::string&,const std::string&,const std::string&,const std::string&,
+        char,const std::string&,unsigned int,const std::string&);//Emina M
     //Harun Muderizovic
-    void removeTeacher(unsigned int);
+    void Remove(unsigned int);
     //Ina Saltovic 
     void getSub(unsigned int);
 };
@@ -76,9 +78,9 @@ class subjectapi:public API<Subject>
     void addTeacher(unsigned int,unsigned int,const std::string&,const std::string&,const std::string&,
         const std::string&,char,const std::string&,unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
-    void saveSubject(unsigned int, const std::string&, unsigned int, const std::string&);
+    void save(unsigned int, const std::string&, unsigned int, const std::string&);
     void connectSubjDep(unsigned int, unsigned int);
-    void removeSubject(unsigned int);
+    void Remove(unsigned int);
     void connectSubjTeach(unsigned int, unsigned int);
 };
 
@@ -96,9 +98,9 @@ class departmentapi:public API<Department>
     void update(){Update("id | name");}
     void addSubject(unsigned int,unsigned int,const std::string&,unsigned int,const std::string&,const std::string&,
     const std::string&); //Emina Mahmutbegovic
-    void saveDep(unsigned int,const std::string&);//Emina Mahmutbegovic
+    void save(unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
     void getSubjects(unsigned int);
     //Vedad Mešić
-    void removeDep(unsigned int);
+    void Remove(unsigned int);
 };

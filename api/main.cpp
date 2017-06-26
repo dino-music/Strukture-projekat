@@ -8,24 +8,48 @@ int main(void)
   teacherapi teacherAPI;
   subjectapi subjectAPI;
   departmentapi departmentAPI;
-  connect(studentAPI,teacherAPI,subjectAPI,departmentAPI);
+  connect(studentAPI,teacherAPI,subjectAPI,departmentAPI);  
   
- //studentAPI.for_each([](const Student& a){a.debug_print();});
+  cout << endl;
   studentAPI.getAll();
-  //teacherAPI.for_each([](const Teacher& a){a.debug_print();});
-  teacherAPI.getAll();
-  //subjectAPI.for_each([](const Subject& a){a.debug_print();});
-  subjectAPI.getAll();
- // departmentAPI.for_each([](const Department& a){a.debug_print();});
-  departmentAPI.getAll();
+  cout << endl;
+  studentAPI.save(3, "Josip", "Broz", "1892-5-7", "josip.broz@fet.ba", 'M', "2307996185082", 2);
+  studentAPI.getAll();
+  cout << endl;
   studentAPI.getById(1);
-  studentAPI.getById(4);
-  subjectAPI.getById(2);
-  subjectAPI.getById(5);
-  subjectAPI.getStudents(1);
-  subjectAPI.getTeachers(1);
-  subjectAPI.getTeachers(2);
-  update(studentAPI,teacherAPI,subjectAPI,departmentAPI);
+  cout << "Polozeni predmeti:" << endl;
+  studentAPI.passedExams(1);
+  cout << endl << endl << endl;
 
-  return 0;
+  departmentAPI.getSubjects(1);
+  subjectAPI.Remove(2);
+  departmentAPI.getSubjects(1);
+  departmentAPI.getById(2);
+  departmentAPI.save(3,"Telekomunikacije");
+  departmentAPI.getById(3);
+
+  studentAPI.changeLastName(3,"Broz-TITO");
+  studentAPI.getById(3);
+
+  studentAPI.save(4, "Jaska", "Nekic", "1999-9-9", "jaska.nek@fet.ba", 'F', "1007967122155", 3);
+  cout << endl;
+  studentAPI.getAll();
+
+  teacherAPI.getById(10);
+  
+  cout << endl;
+
+  teacherAPI.changeTitle(2,"docent");
+  teacherAPI.getById(2);
+  
+  cout << endl;
+  
+  teacherAPI.changeDep(1,3);
+  teacherAPI.getById(1);
+
+  subjectAPI.save(3,"Uvod u Racunarske Algoritme", 6, "URA");
+  subjectAPI.getAll();
+  
+
+  update(studentAPI,teacherAPI,subjectAPI,departmentAPI);
 }
