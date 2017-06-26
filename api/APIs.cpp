@@ -56,6 +56,34 @@ void studentapi::passedExams(unsigned int id){
   }
 }
 
+//Harun Muderizovic
+void studentapi::getSubjects(unsigned int id)
+{
+  auto it = find(id);
+  if(it == end())
+  {
+    std::cout << "Student nije unesen!" << std::endl << std::endl;
+    return;
+  }
+  
+  std::cout << (*it).getFirstName() << ' ' << (*it).getLastName() << " nije polozio predmete:" << std::endl;
+  bool polozio_sve = true;
+  for(auto s : (*it).getExams())
+  {
+    if(s.evaluation < 6)
+    {
+      polozio_sve = false;
+      auto ITsubj = (*subjectAPI).find(s.subjectId);
+      (*ITsubj).print();
+    }
+  }
+
+  if(polozio_sve)
+    std::cout << "Student nema nepolozenih predmeta!" << std::endl;
+
+  std::cout << std::endl;
+}
+
 
 
 
