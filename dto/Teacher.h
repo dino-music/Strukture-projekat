@@ -20,5 +20,5 @@ class Teacher: public Student{
    //Vedad Mešić
   void debug_print()const;
   //Harun Muderizovic
-	std::list<unsigned int>& getSubjects() {return subjects;}
+  std::list<unsigned int>& getSubjects() {return subjects;}
 };
