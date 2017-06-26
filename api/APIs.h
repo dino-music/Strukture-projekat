@@ -63,7 +63,7 @@ class subjectapi:public API<Subject>
     void update(){Update("id | name | ects | abbreviation");}
     //Harun Muderizovic
     void saveSubject(unsigned int, const std::string&, unsigned int, const std::string&);
-    void connectSubjDep(unsigned int, unsigned int, departmentapi&);
+    void connectSubjDep(unsigned int, unsigned int);
 };
 
 
@@ -82,5 +82,5 @@ class departmentapi:public API<Department>
     const std::string&); //Emina Mahmutbegovic
     void saveDep(unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
-    void getSubjects(unsigned int, subjectapi&);
+    void getSubjects(unsigned int);
 };
