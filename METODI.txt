@@ -33,7 +33,7 @@ profesor
 	dodavanje profesora
 	uklanjenje profesora
 	16.ispis svih profesora - DONE
-	17.ispis predmeta koje drži
+	17.ispis predmeta koje drži - DONE
 	18.promjena titule DONE
 	19.dodati predmet profesoru - DONE
 	20.ukloniti predmet profesoru
