@@ -52,11 +52,10 @@ class teacherapi:public API<Teacher>
 class subjectapi:public API<Subject>
 {
   private:
+  public:
     departmentapi* departmentAPI;
     studentapi* studentAPI;
     teacherapi* teacherAPI;
-  
-  public:
     subjectapi():API(){}
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     void setStudentAPI(studentapi* reff){studentAPI=reff;}
@@ -91,4 +90,6 @@ class departmentapi:public API<Department>
     void saveDep(unsigned int,const std::string&);//Emina Mahmutbegovic
     //Harun Muderizovic
     void getSubjects(unsigned int);
+    //Vedad Mešić
+    void removeDep(unsigned int);
 };
