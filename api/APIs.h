@@ -26,6 +26,7 @@ class studentapi:public API<Student>
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | departmentId");}
+    void changeLastName(unsigned int,const std::string&);
 };
 
 class teacherapi:public API<Teacher>
@@ -42,6 +43,8 @@ class teacherapi:public API<Teacher>
     void getAll();
     void getById(unsigned int key);
     void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId");}
+    void changeLastName(unsigned int,const std::string&);
+    void changeTitle(unsigned int,const std::string&);
 };
 
 class subjectapi:public API<Subject>
