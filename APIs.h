@@ -21,7 +21,8 @@ class studentapi:public API<Student>
     void setDepartmentAPI(departmentapi *reff){departmentAPI=reff;}
     std::string getDep(unsigned int);
     void getAll();
-    void getOne(unsigned int key);
+    void getById(unsigned int key);
+    void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | departmentId");}
 };
 
 class teacherapi:public API<Teacher>
@@ -36,7 +37,8 @@ class teacherapi:public API<Teacher>
     void setDepartmentAPI(departmentapi* reff){departmentAPI=reff;}
     std::string getDep(unsigned int);
     void getAll();
-    void getOne(unsigned int key);
+    void getById(unsigned int key);
+    void update(){Update("ID | firstName | lastName | birthdate | email | gender | jmbg | title| departmentId");}
 };
 
 class subjectapi:public API<Subject>
@@ -52,9 +54,10 @@ class subjectapi:public API<Subject>
     void setStudentAPI(studentapi* reff){studentAPI=reff;}
     void setTeacherAPI(teacherapi* reff){teacherAPI=reff;}
     void getAll(){printall("ID, Ime, Godina, Semestar, ECTS krediti, Skracenica");}
-    void getOne(unsigned int key){printone(key,"predmet");}
+    void getById(unsigned int key){printone(key,"predmet");}
     void getStudents(unsigned int);
     void getTeachers(unsigned int);
+    void update(){Update("id | name | ects | abbreviation");}
 };
 
 
@@ -67,5 +70,6 @@ class departmentapi:public API<Department>
     departmentapi(std::string s):API(s){}
     void setSubjectAPI(subjectapi* reff){subjectAPI=reff;}
     void getAll(){printall("ID, Ime");}
-    void getOne(unsigned int key){printone(key,"odsjek");}
+    void getById(unsigned int key){printone(key,"odsjek");}
+    void update(){Update("id | name");}
 };

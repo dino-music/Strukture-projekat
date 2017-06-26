@@ -64,6 +64,11 @@ void Student::debug_print()const{
     el.print();
   std::cout<<std::endl<<std::endl;
 }
+void Student::file_outputSST(std::ofstream& fajl){
+  for(auto& el: exams){
+    fajl<<id<<", "<<el.subjectId<<", "<<el.teacherId<<", "<<el.evaluation<<", "<<el.date<<std::endl;
+  }
+}
 
 Teacher::Teacher(const std::string& line): Student(){
   std::stringstream sline(line);
@@ -177,7 +182,14 @@ void Subject::debug_print()const{
     std::cout<<el<<" ";
   std::cout<<std::endl<<std::endl;
 }
-
+//Vedad Mešić
+void Subject::file_outputST(std::ofstream& fajl){
+  for(auto& el: teachers)
+    fajl<<id<<", "<<el<<std::endl;
+}
+void Subject::file_outputDS(std::ofstream& fajl){
+    fajl<<department<<", "<<id<<", "<<year<<", "<<semester<<std::endl;
+}
 Department::Department(const std::string& line){
   std::stringstream sline(line);
   std::string info; 

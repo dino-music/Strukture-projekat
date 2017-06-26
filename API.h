@@ -30,6 +30,7 @@ class API
     typename linkedlist<T>::iterator end(){return api_[0].end();}
     void printone(unsigned int,std::string);
     void printall(std::string);
+    void Update(std::string);
 };
 
 //Harun Muderizovic
@@ -156,4 +157,13 @@ struct exam
   exam(unsigned int sID, unsigned int tID, int e, const std::string& d) : subjectId(sID),teacherId(tID),evaluation(e),date(d) {}
   void print() const{std::cout<<subjectId<<" "<<teacherId<<" "<<evaluation<<" "<<date<<" ";}
 };
+//Vedad Mešić
+template <typename T>
+void API<T>::Update(std::string header){
+  std::ofstream file;
+ file.open(file_);
+ file<<header<<std::endl;
+  auto lambda=[&](T& b){b.file_output(file);};
+  for_each(lambda);
+}
 

@@ -38,6 +38,7 @@ class Student{
   void file_output(std::ofstream&);
   //Vedad Mešić
   void debug_print()const;
+  void file_outputSST(std::ofstream&);
 
 };
 
@@ -90,6 +91,8 @@ class Subject{
   void file_output(std::ofstream&);
    //Vedad Mešić
   void debug_print()const;
+  void file_outputST(std::ofstream&);
+  void file_outputDS(std::ofstream&);
   std::list<unsigned int>& getStudents(){return students;}
   std::list<unsigned int>& getTeachers(){return teachers;}
   std::string getYear()const{return year;}

@@ -20,7 +20,7 @@ void studentapi::getAll()
   std::cout<<std::endl;
 }
 
-void studentapi::getOne(unsigned int key)
+void studentapi::getById(unsigned int key)
 {
   auto it=find(key);
   if(it==end())
@@ -56,7 +56,7 @@ void teacherapi::getAll()
   std::cout<<std::endl;
 }
 
-void teacherapi::getOne(unsigned int key)
+void teacherapi::getById(unsigned int key)
 {
   auto it=find(key);
   if(it==end())
@@ -78,7 +78,7 @@ void subjectapi::getStudents(unsigned int key)
     return;
   }
 
-    std::string temp="ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Titula, ID odsjeka";
+    std::string temp="ID, Ime, Prezime, Datum rodjenja, E-mail, Spol, JMBG, Odsjek";
     std::cout<<temp<<std::endl;
     std::cout<<std::string(temp.size(),'-')<<std::endl;
     for(auto const& i:(*it).getStudents())//prolazimo kroz listu studenata koji slusaju predmet, i ispisujemo
