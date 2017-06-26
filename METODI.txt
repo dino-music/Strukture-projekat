@@ -19,7 +19,7 @@ subject api
 		ukloni predmet u departmentu
 		ukloni predmet kod profesora 
 		ukloni predmet kod studenta
-	11.dodavanje predmeta
+	11.dodavanje predmeta - DONE
 	12.dodavanje profesora predmetu
 		treba provjeriti da li profesor koji se dodaje postoji u listi profesora
 	13.otklanjanje profesora s predmeta 
