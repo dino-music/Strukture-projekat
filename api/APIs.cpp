@@ -297,5 +297,32 @@ void departmentapi::getSubjects(unsigned int id)
   std::cout << '.' << std::endl << std::endl;
 }
 
+//Vedad Mešić
+void departmentapi::removeDep(unsigned int ID){
+  auto it=find(ID);
+  if(it==end())
+    std::cout<<"Nema tog ID-a"<<std::endl;
+  else{
+    for(auto& el : (*it).getSubjects()){
+      auto it2=subjectAPI->find(el);
+      if(it2!=subjectAPI->end()){
+        for(auto& item : (*it2).getTeachers()){
+          auto it3=subjectAPI->teacherAPI->find(item);
+          if( it3!=subjectAPI->teacherAPI->end() && (*it3).getDepId()==ID){
+            subjectAPI->teacherAPI->remove((*it3).getId());
+          }
+        } 
+        for(auto& item : (*it2).getStudents()){
+          auto it3=subjectAPI->studentAPI->find(item);
+          if( it3!=subjectAPI->studentAPI->end() && (*it3).getDepId()==ID){
+            subjectAPI->studentAPI->remove((*it3).getId());
+          }
+        }
+      subjectAPI->remove(el);
+      }
+    }
+  remove(ID);
+  }
 
+}
 
