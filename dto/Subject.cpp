@@ -14,10 +14,11 @@ Subject::Subject(const std::string& line){
   ects=std::stoi(info); 
   std::getline(sline,info,' ');
   std::getline(sline,abberv,'\r');
+  department = 0;
 }
 
 //Ina Saltovic
-Subject::Subject(unsigned int ID, const std::string& ime, unsigned int ECTS, const std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV} {}
+Subject::Subject(unsigned int ID, const std::string& ime, unsigned int ECTS, const std::string& ABBERV) : id{ID}, name{ime}, ects{ECTS}, abberv{ABBERV}, department{0} {}
 
 //Ina Saltovic 
 void Subject::file_output(std::ofstream& fajl){
