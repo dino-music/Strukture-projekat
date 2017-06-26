@@ -6,6 +6,7 @@ department api
 		prođi kroz subjecte tog departmenta
 		prolazeć kroz subjecte, prođi kroz profesore i studente koji drže taj department i otkloni ih, nakon čega ćeš otkloniti i subjecte departmenta, te na kraju i department
 	5.metod za output u departments.txt - DONE
+	Metod za dodavanje subjecta departmentu.
 	BONUS promjena imena departmenta-po istom principu ko ovo iznad
 	BONUS ispis departmenta sa ispisom predmeta u tom departmentu
 	
