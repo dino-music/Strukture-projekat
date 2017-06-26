@@ -46,8 +46,8 @@ profesor
 student
 	22.dohvatanje jednog studenta - DONE
 	23.ispis svih studenata - DONE
-	24.Ispis ispita koje je položio
-	25.Ispis ispita koje nije položio
+	24.Ispis ispita koje je položio - DONE
+	25.Ispis ispita koje nije položio - DONE
 	26.Dodavanje studenta DONE
 		Provjeriti da li postoji department koji je unešen sa studentom, ako ne postoji, ponuditi korisniku mogućnost da prvo unese department
 	27.Uklanjanje studenta
